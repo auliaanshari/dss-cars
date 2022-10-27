@@ -1,0 +1,468 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+  <div class="container-fluid justify-content-center d-flex">
+    <div class="w-25 " >
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+          {% if messages %}
+              {% for category, message in messages %}
+                  <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                      {{ message }}
+                  </div>
+              {% endfor %}
+          {% endif %}
+        {% endwith %}
+    </div>
+  </div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+    <div class="container-fluid py-1 px-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/data_mobil">Admin</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Data Mobil</li>
+        </ol>
+        <h6 class="font-weight-bolder mb-0">Data Mobil</h6>
+      </nav>
+      <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+        <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+        </div>
+        <ul class="navbar-nav  justify-content-end">
+          <li class="nav-item dropdown pe-2 d-flex align-items-center">
+            <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-user cursor-pointer"></i>
+              <span class="d-sm-inline d-none">{% if session['logged_in'] == True %}Admin{% else %}Guest{% endif %}</span>
+            </a>
+            <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+              <li class="mb-2">
+                <a class="dropdown-item border-radius-md" href="/logout">
+                  <div class="d-flex py-1">
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6 class="text-sm font-weight-normal mb-1">
+                        <span class="font-weight-bold">Logout</span>
+                      </h6>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <div class="container-fluid py-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+            <div class="row">
+              <div class="col-md-8"><h6>Data Mobil</h6></div>
+              <div class="col-md-4" align="right">
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal-tambah" type="button" align="right">Tambah Data</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">ID</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Merk</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Jenis</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Model</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Varian</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Transmisi</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Harga</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Jenis BBM</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for item in rows %}
+                  <tr>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder">{{item[0]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[1]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[2]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[3]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[4]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      {% if "MT" in item[7] %}
+                        <span class="badge badge-sm bg-gradient-dark">{{item[7]}}</span>
+                      {% elif "AT" in item[7] %}
+                        <span class="badge badge-sm bg-gradient-secondary">{{item[7]}}</span>
+                      {% else %}
+                        {{item[7]}}
+                      {% endif %}
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[5]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      {% if "Bensin" in item[9] %}
+                        <span class="badge badge-sm bg-gradient-primary">{{item[9]}}</span>
+                      {% elif "Diesel" in item[9] %}
+                        <span class="badge badge-sm bg-gradient-warning">{{item[9]}}</span>
+                      {% else %}
+                        {{item[9]}}
+                      {% endif %}
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <button type="button" class="badge badge-sm bg-gradient-info" data-bs-toggle="modal" data-original-title="detail mobil" data-bs-target="#modal-detail-{{item[0]}}">
+                        Detail
+                      </button>
+                      <button type="button" class="badge badge-sm bg-gradient-success" data-bs-toggle="modal" data-original-title="edit mobil" data-bs-target="#modal-edit-{{item[0]}}">
+                        Edit
+                      </button>
+                      <button type="button" class="badge badge-sm bg-gradient-danger" data-bs-toggle="modal" data-original-title="delete mobil" data-bs-target="#modal-delete-{{item[0]}}">
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                  <div class="modal fade" id="modal-detail-{{item[0]}}" tabindex="-1" role="dialog" aria-labelledby="modal-detail" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                      <div class="modal-content">
+                        <div class="modal-body p-0">
+                          <div class="card card-plain">
+                            <div class="card-header pb-0 text-left">
+                              <h3 class="font-weight-bolder text-primary text-gradient">Detail Data Mobil</h3>
+                            </div>
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <img src="/static/image/{{ item[12] }}" class="h-80 w-80" alt="main_logo">
+                                </div>
+                                <div class="col-md-6">
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">ID</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[0]}}</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Merk</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[1]}}</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Jenis</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[2]}}</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Model</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[3]}}</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Varian</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[4]}}</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Harga</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[5]}}</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Kapasitas Silinder</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[6]}}</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Transmisi</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[7]}}</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Jenis BBM</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[9]}}</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Konsumsi BBM</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[10]}}</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Kapasitas Penumpang</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[8]}}</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Jumlah Silinder</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[11]}}</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="text-center">
+                                <button type="button" class="btn btn-round bg-gradient-secondary btn-lg w-50 mt-4 mb-0" data-bs-dismiss="modal" >Cancel</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade" id="modal-edit-{{item[0]}}" tabindex="-1" role="dialog" aria-labelledby="modal-edit" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                      <div class="modal-content">
+                        <div class="modal-body p-0">
+                          <div class="card card-plain">
+                            <div class="card-header pb-0 text-left">
+                              <h3 class="font-weight-bolder text-primary text-gradient">Edit Data Mobil</h3>
+                            </div>
+                            <div class="card-body">
+                              <form action="/update_mobil" method="post">
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group col-md-11">
+                                      <label for="editmerk">Merk</label>
+                                      <input value={{ item[0] }} type="hidden" class="form-control" id="id_mobil" name="id_mobil" required>
+                                      <input value={{ item[1] }} type="text" class="form-control" id="editmerk" name="editmerk" placeholder="Merk" required>
+                                    </div>
+                                    <div class="form-group col-md-11">
+                                      <label for="editjenis">Jenis</label>
+                                      <input value={{ item[2] }} type="text" class="form-control" id="editjenis" name="editjenis" placeholder="Jenis" required>
+                                    </div>
+                                    <div class="form-group col-md-11">
+                                      <label for="editmodel">Model</label>
+                                      <input value={{ item[3] }} type="text" class="form-control" id="editmodel" name="editmodel" placeholder="Model" required>
+                                    </div>
+                                    <div class="form-group col-md-11">
+                                      <label for="editvarian">Varian</label>
+                                      <input value={{ item[4] }} type="text" class="form-control" id="editvarian" name="editvarian" placeholder="Varian" required>
+                                    </div>
+                                    <div class="form-group col-md-11">
+                                      <label for="editjmcc">Jumlah Silinder</label>
+                                      <input value={{ item[11] }} type="number" class="form-control" id="editjmcc" name="editjmcc" placeholder="0123456789" required>
+                                    </div>
+                                    <div class="form-group col-md-11">
+                                      <label for="editgambar">Gambar</label>
+                                      <input value={{ item[12] }} type="file" class="form-control" id="editgambar" name="editgambar" required>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group col-md-11">
+                                      <label for="editharga">Harga</label>
+                                      <input value={{ item[5] }} type="number" class="form-control" id="editharga" name="editharga" placeholder="0123456789" required>
+                                    </div>
+                                    <div class="form-group col-md-11">
+                                      <label for="editcc">Kapasitas Silinder</label>
+                                      <input value={{ item[6] }} type="number" class="form-control" id="editcc" name="editcc" placeholder="0123456789" required>
+                                    </div>
+                                    <div class="form-group col-md-11">
+                                      <label for="edittrans">Transmisi</label>
+                                      <select class="form-control" id="edittrans" name="edittrans" required>
+                                        {% if "AT" in item[7] %}
+                                        <option value="">Pilih Transmisi</option>
+                                        <option value="AT" selected>AT</option>
+                                        <option value="MT">MT</option>
+                                        {% elif "MT" in item[7] %}
+                                        <option value="">Pilih Transmisi</option>
+                                        <option value="AT">AT</option>
+                                        <option value="MT" selected>MT</option>
+                                        {% else %}
+                                        <option value="">Pilih Transmisi</option>
+                                        <option value="AT" selected>AT</option>
+                                        <option value="MT">MT</option>
+                                        {% endif %}
+                                      </select>
+                                    </div>
+                                    <div class="form-group col-md-11">
+                                      <label for="editjbbm">Jenis BBM</label>
+                                      <select class="form-control" id="editjbbm" name="editjbbm" required>
+                                        {% if "Bensin" in item[9] %}
+                                        <option value="">Pilih Jenis BBM</option>
+                                        <option value="Bensin" selected>Bensin</option>
+                                        <option value="Diesel">Diesel</option>
+                                        {% elif "Diesel" in item[9] %}
+                                        <option value="">Pilih Jenis BBM</option>
+                                        <option value="Bensin">Bensin</option>
+                                        <option value="Diesel" selected>Diesel</option>
+                                        {% else %}
+                                        <option value="">Pilih Jenis BBM</option>
+                                        <option value="Bensin">Bensin</option>
+                                        <option value="Diesel">Diesel</option>
+                                        {% endif %}
+                                      </select>
+                                    </div>
+                                    <div class="form-group col-md-11">
+                                      <label for="editkbbm">Konsumsi BBM</label>
+                                      <input value={{ item[10] }} type="number" step="0.1" class="form-control" id="editkbbm" name="editkbbm" placeholder="0123456789" required>
+                                    </div>
+                                    <div class="form-group col-md-11">
+                                      <label for="editpenum">Kapasitas Penumpang</label>
+                                      <input value={{ item[8] }} type="number" class="form-control" id="editpenum" name="editpenum" placeholder="0123456789" required>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="text-center">
+                                  <button type="submit" class="btn btn-round bg-gradient-primary btn-lg w-50 mt-4 mb-0">Submit</button>
+                                  <button type="button" class="btn btn-round bg-gradient-secondary btn-lg w-50 mt-4 mb-0" data-bs-dismiss="modal" >Cancel</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade" id="modal-delete-{{item[0]}}" tabindex="-1" role="dialog" aria-labelledby="modal-delete" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                      <div class="modal-content">
+                        <div class="modal-body p-0">
+                          <div class="card card-plain">
+                            <div class="card-header pb-0 text-left">
+                              <h3 class="font-weight-bolder text-primary text-gradient">Delete Data Mobil</h3>
+                            </div>
+                            <div class="card-body">
+                              <form action="/delete_mobil" method="post">
+                                <div class="row">
+                                  <div class="col-12">
+                                    <div class="form-group">
+                                      <input value={{ item[0] }} type="hidden" class="form-control" id="id_mobil_todel" name="id_mobil_todel" required>
+                                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">Are you sure to delete mobil with :</span><br><br>
+                                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">ID : {{item[0]}}</span><br>
+                                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">Merk : {{item[1]}}</span><br>
+                                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">Jenis : {{item[2]}}</span><br>
+                                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">Model : {{item[3]}}</span><br>
+                                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">Varian : {{item[4]}}</span><br>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="text-center">
+                                  <button type="submit" class="btn btn-round bg-gradient-primary btn-lg w-50 mt-4 mb-0">Yes</button>
+                                  <button type="button" class="btn btn-round bg-gradient-secondary btn-lg w-50 mt-4 mb-0" data-bs-dismiss="modal" >Cancel</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-tambah" tabindex="-1" role="dialog" aria-labelledby="modal-tambah" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <div class="card card-plain">
+              <div class="card-header pb-0 text-left">
+                <h3 class="font-weight-bolder text-primary text-gradient">Tambah Data Mobil</h3>
+              </div>
+              <div class="card-body">
+                <form action="/create_mobil" method="post">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group col-md-11">
+                        <label for="inputmerk">Merk</label>
+                        <input type="text" class="form-control" id="inputmerk" name="inputmerk" placeholder="Merk" required>
+                      </div>
+                      <div class="form-group col-md-11">
+                        <label for="inputjenis">Jenis</label>
+                        <input type="text" class="form-control" id="inputjenis" name="inputjenis" placeholder="Jenis" required>
+                      </div>
+                      <div class="form-group col-md-11">
+                        <label for="inputmodel">Model</label>
+                        <input type="text" class="form-control" id="inputmodel" name="inputmodel" placeholder="Model" required>
+                      </div>
+                      <div class="form-group col-md-11">
+                        <label for="inputvarian">Varian</label>
+                        <input type="text" class="form-control" id="inputvarian" name="inputvarian" placeholder="Varian" required>
+                      </div>
+                      <div class="form-group col-md-11">
+                        <label for="inputjmcc">Jumlah Silinder</label>
+                        <input type="number" class="form-control" id="inputjmcc" name="inputjmcc" placeholder="0123456789" required>
+                      </div>
+                      <div class="form-group col-md-11">
+                        <label for="inputgambar">Gambar</label>
+                        <input type="file" class="form-control" id="inputgambar" name="inputgambar" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group col-md-11">
+                        <label for="inputharga">Harga</label>
+                        <input type="number" class="form-control" id="inputharga" name="inputharga" placeholder="0123456789" required>
+                      </div>
+                      <div class="form-group col-md-11">
+                        <label for="inputcc">Kapasitas Silinder</label>
+                        <input type="number" class="form-control" id="inputcc" name="inputcc" placeholder="0123456789" required>
+                      </div>
+                      <div class="form-group col-md-11">
+                        <label for="inputtrans">Transmisi</label>
+                        <select class="form-control" id="inputtrans" name="inputtrans" required>
+                          <option value="">Pilih Transmisi</option>
+                          <option value="AT">AT</option>
+                          <option value="MT">MT</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-11">
+                        <label for="inputjbbm">Jenis BBM</label>
+                        <select class="form-control" id="inputjbbm" name="inputjbbm" required>
+                          <option value="">Pilih Jenis BBM</option>
+                          <option value="Bensin">Bensin</option>
+                          <option value="Diesel">Diesel</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-11">
+                        <label for="inputkbbm">Konsumsi BBM</label>
+                        <input type="number" step="0.1" class="form-control" id="inputkbbm" name="inputkbbm" placeholder="0123456789" required>
+                      </div>
+                      <div class="form-group col-md-11">
+                        <label for="inputpenum">Kapasitas Penumpang</label>
+                        <input type="number" class="form-control" id="inputpenum" name="inputpenum" placeholder="0123456789" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-round bg-gradient-primary btn-lg w-50 mt-4 mb-0">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+{% endblock %}

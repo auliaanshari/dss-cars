@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+  <!-- Navbar -->
+  <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+    <div class="container-fluid py-1 px-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/app_spk">Analisa SPK</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Perangkingan</li>
+        </ol>
+        <h6 class="font-weight-bolder mb-0">Perangkingan</h6>
+      </nav>
+      <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+        <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+        </div>
+        <ul class="navbar-nav  justify-content-end">
+          <li class="nav-item dropdown pe-2 d-flex align-items-center">
+            <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-user cursor-pointer"></i>
+              <span class="d-sm-inline d-none">{% if session['logged_in'] == True %}Admin{% else %}Guest{% endif %}</span>
+            </a>
+            <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+              <li class="mb-2">
+                <a class="dropdown-item border-radius-md" href="/logout">
+                  <div class="d-flex py-1">
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6 class="text-sm font-weight-normal mb-1">
+                        <span class="font-weight-bold">Logout</span>
+                      </h6>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <div class="container-fluid py-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+            <div class="row">
+              <div class="col-md-8"><h6>Perangkingan</h6></div>
+              <div class="col-md-4" align="right">
+                <a href="/app_spk" class="btn btn-outline-info" role="button" aria-pressed="true" align="right">APP SPK</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder">Rangking</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder">Merk</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder">Model</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder">Varian</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder">Nilai</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for item in rows %}
+                  <tr>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-success">{{loop.index}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[1]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[2]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[3]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-primary">{{item[13]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <button type="button" class="badge badge-sm bg-gradient-info" data-bs-toggle="modal" data-original-title="detail mobil" data-bs-target="#modal-detail-{{item[0]}}">
+                        Detail
+                      </button>
+                    </td>
+                  </tr>
+                <div class="modal fade" id="modal-detail-{{item[0]}}" tabindex="-1" role="dialog" aria-labelledby="modal-detail" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                    <div class="modal-content">
+                      <div class="modal-body p-0">
+                        <div class="card card-plain">
+                          <div class="card-header pb-0 text-left">
+                            <h3 class="font-weight-bolder text-primary text-gradient">Detail Data Mobil</h3>
+                          </div>
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <img src="/static/image/{{ item[12] }}" class="h-80 w-80" alt="main_logo">
+                              </div>
+                              <div class="col-md-6">
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">ID</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[0]}}</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Merk</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[1]}}</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Jenis</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[2]}}</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Model</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[3]}}</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Varian</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[4]}}</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Harga</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[5]}}</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Kapasitas Silinder</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[6]}}</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Transmisi</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[7]}}</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Jenis BBM</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[9]}}</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Konsumsi BBM</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[10]}}</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Kapasitas Penumpang</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[8]}}</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Jumlah Silinder</span>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[11]}}</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="text-center">
+                              <button type="button" class="btn btn-round bg-gradient-secondary btn-lg w-50 mt-4 mb-0" data-bs-dismiss="modal" >Cancel</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer pt-4 pb-0">
+            <div class="row justify-content-center d-flex">
+              <div class="w-25">
+                <a href="/cetak" target="_blank" class="btn btn-outline-primary" role="button" aria-pressed="true" >Cetak</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

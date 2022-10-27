@@ -1,0 +1,475 @@
+id,crit,subcrit
+1,Harga,Murah
+1,Kapasitas Silinder,Rendah
+1,Transmisi,MT
+1,Jenis BBM,Bensin
+1,Konsumsi BBM,Irit
+1,Kapasitas Penumpang,Sedang
+2,Harga,Murah
+2,Kapasitas Silinder,Sedang
+2,Transmisi,MT
+2,Jenis BBM,Bensin
+2,Konsumsi BBM,Sedang
+2,Kapasitas Penumpang,Sedang
+3,Harga,Murah
+3,Kapasitas Silinder,Sedang
+3,Transmisi,AT
+3,Jenis BBM,Bensin
+3,Konsumsi BBM,Sedang
+3,Kapasitas Penumpang,Sedang
+4,Harga,Murah
+4,Kapasitas Silinder,Rendah
+4,Transmisi,AT
+4,Jenis BBM,Bensin
+4,Konsumsi BBM,Irit
+4,Kapasitas Penumpang,Banyak
+5,Harga,Murah
+5,Kapasitas Silinder,Sedang
+5,Transmisi,AT
+5,Jenis BBM,Bensin
+5,Konsumsi BBM,Boros
+5,Kapasitas Penumpang,Banyak
+6,Harga,Murah
+6,Kapasitas Silinder,Sedang
+6,Transmisi,MT
+6,Jenis BBM,Bensin
+6,Konsumsi BBM,Sedang
+6,Kapasitas Penumpang,Sedikit
+7,Harga,Murah
+7,Kapasitas Silinder,Rendah
+7,Transmisi,AT
+7,Jenis BBM,Bensin
+7,Konsumsi BBM,Sedang
+7,Kapasitas Penumpang,Sedang
+8,Harga,Murah
+8,Kapasitas Silinder,Sedang
+8,Transmisi,MT
+8,Jenis BBM,Bensin
+8,Konsumsi BBM,Sedang
+8,Kapasitas Penumpang,Banyak
+9,Harga,Murah
+9,Kapasitas Silinder,Sedang
+9,Transmisi,AT
+9,Jenis BBM,Bensin
+9,Konsumsi BBM,Sedang
+9,Kapasitas Penumpang,Banyak
+10,Harga,Murah
+10,Kapasitas Silinder,Sedang
+10,Transmisi,MT
+10,Jenis BBM,Bensin
+10,Konsumsi BBM,Boros
+10,Kapasitas Penumpang,Banyak
+11,Harga,Murah
+11,Kapasitas Silinder,Rendah
+11,Transmisi,AT
+11,Jenis BBM,Bensin
+11,Konsumsi BBM,Irit
+11,Kapasitas Penumpang,Sedang
+12,Harga,Murah
+12,Kapasitas Silinder,Rendah
+12,Transmisi,MT
+12,Jenis BBM,Bensin
+12,Konsumsi BBM,Irit
+12,Kapasitas Penumpang,Sedang
+13,Harga,Murah
+13,Kapasitas Silinder,Rendah
+13,Transmisi,AT
+13,Jenis BBM,Bensin
+13,Konsumsi BBM,Sedang
+13,Kapasitas Penumpang,Sedang
+14,Harga,Murah
+14,Kapasitas Silinder,Rendah
+14,Transmisi,MT
+14,Jenis BBM,Bensin
+14,Konsumsi BBM,Sedang
+14,Kapasitas Penumpang,Sedang
+15,Harga,Murah
+15,Kapasitas Silinder,Sedang
+15,Transmisi,AT
+15,Jenis BBM,Bensin
+15,Konsumsi BBM,Irit
+15,Kapasitas Penumpang,Sedang
+16,Harga,Murah
+16,Kapasitas Silinder,Sedang
+16,Transmisi,MT
+16,Jenis BBM,Bensin
+16,Konsumsi BBM,Irit
+16,Kapasitas Penumpang,Sedang
+17,Harga,Sedang
+17,Kapasitas Silinder,Sedang
+17,Transmisi,AT
+17,Jenis BBM,Bensin
+17,Konsumsi BBM,Sedang
+17,Kapasitas Penumpang,Sedang
+18,Harga,Murah
+18,Kapasitas Silinder,Sedang
+18,Transmisi,MT
+18,Jenis BBM,Bensin
+18,Konsumsi BBM,Sedang
+18,Kapasitas Penumpang,Sedang
+19,Harga,Sedang
+19,Kapasitas Silinder,Sedang
+19,Transmisi,AT
+19,Jenis BBM,Bensin
+19,Konsumsi BBM,Boros
+19,Kapasitas Penumpang,Sedang
+20,Harga,Murah
+20,Kapasitas Silinder,Sedang
+20,Transmisi,AT
+20,Jenis BBM,Bensin
+20,Konsumsi BBM,Irit
+20,Kapasitas Penumpang,Banyak
+21,Harga,Murah
+21,Kapasitas Silinder,Sedang
+21,Transmisi,MT
+21,Jenis BBM,Bensin
+21,Konsumsi BBM,Irit
+21,Kapasitas Penumpang,Banyak
+22,Harga,Mahal
+22,Kapasitas Silinder,Tinggi
+22,Transmisi,AT
+22,Jenis BBM,Bensin
+22,Konsumsi BBM,Boros
+22,Kapasitas Penumpang,Banyak
+23,Harga,Mahal
+23,Kapasitas Silinder,Sedang
+23,Transmisi,AT
+23,Jenis BBM,Bensin
+23,Konsumsi BBM,Sedang
+23,Kapasitas Penumpang,Sedang
+24,Harga,Sedang
+24,Kapasitas Silinder,Sedang
+24,Transmisi,AT
+24,Jenis BBM,Bensin
+24,Konsumsi BBM,Irit
+24,Kapasitas Penumpang,Sedang
+25,Harga,Mahal
+25,Kapasitas Silinder,Tinggi
+25,Transmisi,MT
+25,Jenis BBM,Bensin
+25,Konsumsi BBM,Sedang
+25,Kapasitas Penumpang,Sedang
+26,Harga,Sedang
+26,Kapasitas Silinder,Sedang
+26,Transmisi,AT
+26,Jenis BBM,Bensin
+26,Konsumsi BBM,Boros
+26,Kapasitas Penumpang,Banyak
+27,Harga,Sedang
+27,Kapasitas Silinder,Tinggi
+27,Transmisi,AT
+27,Jenis BBM,Bensin
+27,Konsumsi BBM,Sedang
+27,Kapasitas Penumpang,Sedang
+28,Harga,Murah
+28,Kapasitas Silinder,Sedang
+28,Transmisi,MT
+28,Jenis BBM,Bensin
+28,Konsumsi BBM,Boros
+28,Kapasitas Penumpang,Banyak
+29,Harga,Murah
+29,Kapasitas Silinder,Sedang
+29,Transmisi,AT
+29,Jenis BBM,Bensin
+29,Konsumsi BBM,Boros
+29,Kapasitas Penumpang,Banyak
+30,Harga,Sedang
+30,Kapasitas Silinder,Tinggi
+30,Transmisi,MT
+30,Jenis BBM,Diesel
+30,Konsumsi BBM,Sedang
+30,Kapasitas Penumpang,Sedang
+31,Harga,Murah
+31,Kapasitas Silinder,Tinggi
+31,Transmisi,MT
+31,Jenis BBM,Diesel
+31,Konsumsi BBM,Sedang
+31,Kapasitas Penumpang,Sedikit
+32,Harga,Sedang
+32,Kapasitas Silinder,Sedang
+32,Transmisi,AT
+32,Jenis BBM,Bensin
+32,Konsumsi BBM,Sedang
+32,Kapasitas Penumpang,Sedang
+33,Harga,Sedang
+33,Kapasitas Silinder,Tinggi
+33,Transmisi,AT
+33,Jenis BBM,Diesel
+33,Konsumsi BBM,Sedang
+33,Kapasitas Penumpang,Banyak
+34,Harga,Sedang
+34,Kapasitas Silinder,Tinggi
+34,Transmisi,MT
+34,Jenis BBM,Diesel
+34,Konsumsi BBM,Sedang
+34,Kapasitas Penumpang,Banyak
+35,Harga,Sedang
+35,Kapasitas Silinder,Tinggi
+35,Transmisi,AT
+35,Jenis BBM,Diesel
+35,Konsumsi BBM,Boros
+35,Kapasitas Penumpang,Banyak
+36,Harga,Sedang
+36,Kapasitas Silinder,Tinggi
+36,Transmisi,AT
+36,Jenis BBM,Bensin
+36,Konsumsi BBM,Sedang
+36,Kapasitas Penumpang,Banyak
+37,Harga,Sedang
+37,Kapasitas Silinder,Rendah
+37,Transmisi,AT
+37,Jenis BBM,Bensin
+37,Konsumsi BBM,Irit
+37,Kapasitas Penumpang,Sedang
+38,Harga,Murah
+38,Kapasitas Silinder,Sedang
+38,Transmisi,MT
+38,Jenis BBM,Bensin
+38,Konsumsi BBM,Sedang
+38,Kapasitas Penumpang,Banyak
+39,Harga,Murah
+39,Kapasitas Silinder,Sedang
+39,Transmisi,AT
+39,Jenis BBM,Bensin
+39,Konsumsi BBM,Sedang
+39,Kapasitas Penumpang,Banyak
+40,Harga,Murah
+40,Kapasitas Silinder,Rendah
+40,Transmisi,AT
+40,Jenis BBM,Bensin
+40,Konsumsi BBM,Sedang
+40,Kapasitas Penumpang,Sedang
+41,Harga,Murah
+41,Kapasitas Silinder,Rendah
+41,Transmisi,MT
+41,Jenis BBM,Bensin
+41,Konsumsi BBM,Irit
+41,Kapasitas Penumpang,Sedang
+42,Harga,Sedang
+42,Kapasitas Silinder,Tinggi
+42,Transmisi,MT
+42,Jenis BBM,Diesel
+42,Konsumsi BBM,Boros
+42,Kapasitas Penumpang,Banyak
+43,Harga,Sedang
+43,Kapasitas Silinder,Tinggi
+43,Transmisi,AT
+43,Jenis BBM,Diesel
+43,Konsumsi BBM,Boros
+43,Kapasitas Penumpang,Banyak
+44,Harga,Sedang
+44,Kapasitas Silinder,Tinggi
+44,Transmisi,AT
+44,Jenis BBM,Bensin
+44,Konsumsi BBM,Boros
+44,Kapasitas Penumpang,Banyak
+45,Harga,Murah
+45,Kapasitas Silinder,Sedang
+45,Transmisi,AT
+45,Jenis BBM,Bensin
+45,Konsumsi BBM,Sedang
+45,Kapasitas Penumpang,Sedang
+46,Harga,Murah
+46,Kapasitas Silinder,Sedang
+46,Transmisi,AT
+46,Jenis BBM,Bensin
+46,Konsumsi BBM,Irit
+46,Kapasitas Penumpang,Sedang
+47,Harga,Murah
+47,Kapasitas Silinder,Rendah
+47,Transmisi,AT
+47,Jenis BBM,Bensin
+47,Konsumsi BBM,Sedang
+47,Kapasitas Penumpang,Sedang
+48,Harga,Murah
+48,Kapasitas Silinder,Rendah
+48,Transmisi,MT
+48,Jenis BBM,Bensin
+48,Konsumsi BBM,Sedang
+48,Kapasitas Penumpang,Sedang
+49,Harga,Murah
+49,Kapasitas Silinder,Rendah
+49,Transmisi,AT
+49,Jenis BBM,Bensin
+49,Konsumsi BBM,Irit
+49,Kapasitas Penumpang,Sedang
+50,Harga,Murah
+50,Kapasitas Silinder,Rendah
+50,Transmisi,MT
+50,Jenis BBM,Bensin
+50,Konsumsi BBM,Irit
+50,Kapasitas Penumpang,Sedang
+51,Harga,Murah
+51,Kapasitas Silinder,Sedang
+51,Transmisi,MT
+51,Jenis BBM,Bensin
+51,Konsumsi BBM,Boros
+51,Kapasitas Penumpang,Banyak
+52,Harga,Murah
+52,Kapasitas Silinder,Sedang
+52,Transmisi,AT
+52,Jenis BBM,Bensin
+52,Konsumsi BBM,Sedang
+52,Kapasitas Penumpang,Banyak
+53,Harga,Murah
+53,Kapasitas Silinder,Sedang
+53,Transmisi,MT
+53,Jenis BBM,Bensin
+53,Konsumsi BBM,Irit
+53,Kapasitas Penumpang,Sedang
+54,Harga,Sedang
+54,Kapasitas Silinder,Sedang
+54,Transmisi,MT
+54,Jenis BBM,Bensin
+54,Konsumsi BBM,Sedang
+54,Kapasitas Penumpang,Sedang
+55,Harga,Murah
+55,Kapasitas Silinder,Sedang
+55,Transmisi,MT
+55,Jenis BBM,Bensin
+55,Konsumsi BBM,Sedang
+55,Kapasitas Penumpang,Banyak
+56,Harga,Murah
+56,Kapasitas Silinder,Rendah
+56,Transmisi,MT
+56,Jenis BBM,Bensin
+56,Konsumsi BBM,Irit
+56,Kapasitas Penumpang,Sedang
+57,Harga,Murah
+57,Kapasitas Silinder,Rendah
+57,Transmisi,AT
+57,Jenis BBM,Bensin
+57,Konsumsi BBM,Irit
+57,Kapasitas Penumpang,Sedang
+58,Harga,Murah
+58,Kapasitas Silinder,Sedang
+58,Transmisi,AT
+58,Jenis BBM,Bensin
+58,Konsumsi BBM,Sedang
+58,Kapasitas Penumpang,Sedang
+59,Harga,Mahal
+59,Kapasitas Silinder,Tinggi
+59,Transmisi,AT
+59,Jenis BBM,Bensin
+59,Konsumsi BBM,Boros
+59,Kapasitas Penumpang,Banyak
+60,Harga,Murah
+60,Kapasitas Silinder,Sedang
+60,Transmisi,MT
+60,Jenis BBM,Bensin
+60,Konsumsi BBM,Sedang
+60,Kapasitas Penumpang,Banyak
+61,Harga,Murah
+61,Kapasitas Silinder,Rendah
+61,Transmisi,AT
+61,Jenis BBM,Bensin
+61,Konsumsi BBM,Irit
+61,Kapasitas Penumpang,Banyak
+62,Harga,Murah
+62,Kapasitas Silinder,Rendah
+62,Transmisi,MT
+62,Jenis BBM,Bensin
+62,Konsumsi BBM,Irit
+62,Kapasitas Penumpang,Banyak
+63,Harga,Murah
+63,Kapasitas Silinder,Tinggi
+63,Transmisi,MT
+63,Jenis BBM,Bensin
+63,Konsumsi BBM,Boros
+63,Kapasitas Penumpang,Banyak
+64,Harga,Murah
+64,Kapasitas Silinder,Tinggi
+64,Transmisi,MT
+64,Jenis BBM,Diesel
+64,Konsumsi BBM,Sedang
+64,Kapasitas Penumpang,Banyak
+65,Harga,Sedang
+65,Kapasitas Silinder,Tinggi
+65,Transmisi,AT
+65,Jenis BBM,Diesel
+65,Konsumsi BBM,Sedang
+65,Kapasitas Penumpang,Banyak
+66,Harga,Sedang
+66,Kapasitas Silinder,Tinggi
+66,Transmisi,AT
+66,Jenis BBM,Bensin
+66,Konsumsi BBM,Sedang
+66,Kapasitas Penumpang,Banyak
+67,Harga,Sedang
+67,Kapasitas Silinder,Sedang
+67,Transmisi,AT
+67,Jenis BBM,Bensin
+67,Konsumsi BBM,Sedang
+67,Kapasitas Penumpang,Sedang
+68,Harga,Mahal
+68,Kapasitas Silinder,Tinggi
+68,Transmisi,AT
+68,Jenis BBM,Bensin
+68,Konsumsi BBM,Sedang
+68,Kapasitas Penumpang,Sedang
+69,Harga,Murah
+69,Kapasitas Silinder,Sedang
+69,Transmisi,MT
+69,Jenis BBM,Bensin
+69,Konsumsi BBM,Sedang
+69,Kapasitas Penumpang,Sedang
+70,Harga,Mahal
+70,Kapasitas Silinder,Tinggi
+70,Transmisi,AT
+70,Jenis BBM,Bensin
+70,Konsumsi BBM,Sedang
+70,Kapasitas Penumpang,Sedikit
+71,Harga,Mahal
+71,Kapasitas Silinder,Tinggi
+71,Transmisi,MT
+71,Jenis BBM,Bensin
+71,Konsumsi BBM,Sedang
+71,Kapasitas Penumpang,Sedikit
+72,Harga,Mahal
+72,Kapasitas Silinder,Tinggi
+72,Transmisi,AT
+72,Jenis BBM,Bensin
+72,Konsumsi BBM,Boros
+72,Kapasitas Penumpang,Sedikit
+73,Harga,Sedang
+73,Kapasitas Silinder,Sedang
+73,Transmisi,AT
+73,Jenis BBM,Bensin
+73,Konsumsi BBM,Irit
+73,Kapasitas Penumpang,Sedang
+74,Harga,Sedang
+74,Kapasitas Silinder,Tinggi
+74,Transmisi,MT
+74,Jenis BBM,Diesel
+74,Konsumsi BBM,Sedang
+74,Kapasitas Penumpang,Banyak
+75,Harga,Sedang
+75,Kapasitas Silinder,Tinggi
+75,Transmisi,AT
+75,Jenis BBM,Bensin
+75,Konsumsi BBM,Boros
+75,Kapasitas Penumpang,Banyak
+76,Harga,Mahal
+76,Kapasitas Silinder,Tinggi
+76,Transmisi,AT
+76,Jenis BBM,Diesel
+76,Konsumsi BBM,Boros
+76,Kapasitas Penumpang,Sedang
+77,Harga,Murah
+77,Kapasitas Silinder,Rendah
+77,Transmisi,MT
+77,Jenis BBM,Bensin
+77,Konsumsi BBM,Sedang
+77,Kapasitas Penumpang,Sedang
+78,Harga,Murah
+78,Kapasitas Silinder,Rendah
+78,Transmisi,AT
+78,Jenis BBM,Bensin
+78,Konsumsi BBM,Sedang
+78,Kapasitas Penumpang,Sedang
+79,Harga,Murah
+79,Kapasitas Silinder,Sedang
+79,Transmisi,AT
+79,Jenis BBM,Bensin
+79,Konsumsi BBM,Sedang
+79,Kapasitas Penumpang,Banyak

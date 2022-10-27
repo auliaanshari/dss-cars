@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>AHP-SPK Python</title>
+	</head>
+
+	<body>
+		<div class="container">
+			<header class="header">
+				<h1> Sistem Pendukung Keputusan Pemilihan Mobil</h1>
+			</header>
+
+			<div>
+				<h3>Kriteria</h3>
+				<form action="/matrix_criteria" method="post">
+					<table>
+						<tr>
+							<th>Criteria</th>
+							<th>Bobot</th>
+						</tr>
+						{% for item in rows %}
+						<tr>
+							<td align="center">{{item[0]}}</td>
+							<td align="center">{{item[1]}}</td>
+						</tr>
+						{% endfor %}
+					</table>
+					<input type="submit" value="Submit">
+				</form>
+			</div>
+			<div>
+				<h3>Sub Kriteria Harga</h3>
+				<form action="/matrix_sub_criteria1" method="post">
+					<table>
+						<tr>
+							<th>Sub Criteria</th>
+							<th>Bobot</th>
+						</tr>
+						{% for item in harga %}
+						<tr>
+							<td align="center">{{item[0]}}</td>
+							<td align="center">{{item[1]}}</td>
+						</tr>
+						{% endfor %}
+					</table>
+					<input type="text" name="subcrit" value="SC01%" hidden>
+					<input type="submit" value="Submit">
+				</form>
+			</div>
+			<div>
+				<h3>Sub Kriteria CC</h3>
+				<form action="/matrix_sub_criteria2" method="post">
+					<table>
+						<tr>
+							<th>Sub Criteria</th>
+							<th>Bobot</th>
+						</tr>
+						{% for item in cc %}
+						<tr>
+							<td align="center">{{item[0]}}</td>
+							<td align="center">{{item[1]}}</td>
+						</tr>
+						{% endfor %}
+					</table>
+					<input type="text" name="subcrit" value="SC02%" hidden>
+					<input type="submit" value="Submit">
+				</form>
+			</div>
+			<div>
+				<h3>Sub Kriteria Transmisi</h3>
+				<form action="/matrix_sub_criteria3" method="post">
+					<table>
+						<tr>
+							<th>Sub Criteria</th>
+							<th>Bobot</th>
+						</tr>
+						{% for item in transmisi %}
+						<tr>
+							<td align="center">{{item[0]}}</td>
+							<td align="center">{{item[1]}}</td>
+						</tr>
+						{% endfor %}
+					</table>
+					<input type="text" name="subcrit" value="SC03%" hidden>
+					<input type="submit" value="Submit">
+				</form>
+			</div>
+			<div>
+				<h3>Sub Kriteria Jenis BBM</h3>
+				<form action="/matrix_sub_criteria4" method="post">
+					<table>
+						<tr>
+							<th>Sub Criteria</th>
+							<th>Bobot</th>
+						</tr>
+						{% for item in jenisbbm %}
+						<tr>
+							<td align="center">{{item[0]}}</td>
+							<td align="center">{{item[1]}}</td>
+						</tr>
+						{% endfor %}
+					</table>
+					<input type="text" name="subcrit" value="SC04%" hidden>
+					<input type="submit" value="Submit">
+				</form>
+			</div>
+			<div>
+				<h3>Sub Kriteria Konsumsi BBM</h3>
+				<form action="/matrix_sub_criteria5" method="post">
+					<table>
+						<tr>
+							<th>Sub Criteria</th>
+							<th>Bobot</th>
+						</tr>
+						{% for item in konsbbm %}
+						<tr>
+							<td align="center">{{item[0]}}</td>
+							<td align="center">{{item[1]}}</td>
+						</tr>
+						{% endfor %}
+					</table>
+					<input type="text" name="subcrit" value="SC05%" hidden>
+					<input type="submit" value="Submit">
+				</form>
+			</div>
+			<div>
+				<h3>Sub Kriteria Jumlah Penumpang</h3>
+				<form action="/matrix_sub_criteria6" method="post">
+					<table>
+						<tr>
+							<th>Sub Criteria</th>
+							<th>Bobot</th>
+						</tr>
+						{% for item in jmlp %}
+						<tr>
+							<td align="center">{{item[0]}}</td>
+							<td align="center">{{item[1]}}</td>
+						</tr>
+						{% endfor %}
+					</table>
+					<input type="text" name="subcrit" value="SC06%" hidden>
+					<input type="submit" value="Submit">
+				</form>
+			</div>
+
+			<footer class="footer">
+
+				<p>&copy; SI Unand</p>
+
+			</footer>
+		</div>
+	</body>
+</html>

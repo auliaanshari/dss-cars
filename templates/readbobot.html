@@ -1,0 +1,299 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+  <!-- Navbar -->
+  <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+    <div class="container-fluid py-1 px-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/readbobot">Analisa SPK</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Bobot</li>
+        </ol>
+        <h6 class="font-weight-bolder mb-0">Bobot</h6>
+      </nav>
+      <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+        <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+        </div>
+        <ul class="navbar-nav  justify-content-end">
+          <li class="nav-item dropdown pe-2 d-flex align-items-center">
+            <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-user cursor-pointer"></i>
+              <span class="d-sm-inline d-none">{% if session['logged_in'] == True %}Admin{% else %}Guest{% endif %}</span>
+            </a>
+            <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+              <li class="mb-2">
+                <a class="dropdown-item border-radius-md" href="/logout">
+                  <div class="d-flex py-1">
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6 class="text-sm font-weight-normal mb-1">
+                        <span class="font-weight-bold">Logout</span>
+                      </h6>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <div class="container-fluid py-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+            <div class="row">
+              <div class="col-md-8"><h6>Bobot Kriteria</h6></div>
+              <div class="col-md-4" align="right">
+                <a href="/matrix_criteria" class="btn btn-outline-primary" role="button" aria-pressed="true" align="right">Olah</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Criteria</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder">Bobot</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for item in rows %}
+                  <tr>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder">{{item[0]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-secondary">{{item[1]}}</span>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+            <div class="row">
+              <div class="col-md-8"><h6>Sub Kriteria Harga</h6></div>
+              <div class="col-md-4" align="right">
+                <a href="/matrix_sub_criteria1" class="btn btn-outline-primary" role="button" aria-pressed="true" align="right">Olah</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sub Criteria</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder">Bobot</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for item in harga %}
+                  <tr>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder">{{item[0]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-secondary">{{item[1]}}</span>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+            <div class="row">
+              <div class="col-md-8"><h6>Sub Kriteria CC</h6></div>
+              <div class="col-md-4" align="right">
+                <a href="/matrix_sub_criteria2" class="btn btn-outline-primary" role="button" aria-pressed="true" align="right">Olah</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sub Criteria</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder">Bobot</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for item in cc %}
+                  <tr>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder">{{item[0]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-secondary">{{item[1]}}</span>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+            <div class="row">
+              <div class="col-md-8"><h6>Sub Kriteria Transmisi</h6></div>
+              <div class="col-md-4" align="right">
+                <a href="/matrix_sub_criteria3" class="btn btn-outline-primary" role="button" aria-pressed="true" align="right">Olah</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sub Criteria</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder">Bobot</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for item in transmisi %}
+                  <tr>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder">{{item[0]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-secondary">{{item[1]}}</span>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+            <div class="row">
+              <div class="col-md-8"><h6>Sub Kriteria Jenis BBM</h6></div>
+              <div class="col-md-4" align="right">
+                <a href="/matrix_sub_criteria4" class="btn btn-outline-primary" role="button" aria-pressed="true" align="right">Olah</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sub Criteria</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder">Bobot</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for item in jenisbbm %}
+                  <tr>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder">{{item[0]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-secondary">{{item[1]}}</span>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+            <div class="row">
+              <div class="col-md-8"><h6>Sub Kriteria Konsumsi BBM</h6></div>
+              <div class="col-md-4" align="right">
+                <a href="/matrix_sub_criteria5" class="btn btn-outline-primary" role="button" aria-pressed="true" align="right">Olah</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sub Criteria</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder">Bobot</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for item in konsbbm %}
+                  <tr>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder">{{item[0]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-secondary">{{item[1]}}</span>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+            <div class="row">
+              <div class="col-md-8"><h6>Sub Kriteria Penumpang</h6></div>
+              <div class="col-md-4" align="right">
+                <a href="/matrix_sub_criteria6" class="btn btn-outline-primary" role="button" aria-pressed="true" align="right">Olah</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sub Criteria</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder">Bobot</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for item in jmlp %}
+                  <tr>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder">{{item[0]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-secondary">{{item[1]}}</span>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,200 @@
+<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
+  <div class="sidenav-header">
+    <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+    <a class="navbar-brand m-0" href="javascript:;">
+      <img src="{{ url_for('static', filename='/assets/img/logo-ct.png') }}" class="navbar-brand-img h-100" alt="main_logo">
+      <span class="ms-1 font-weight-bold">SPK Pemilihan Mobil</span>
+    </a>
+  </div>
+  <hr class="horizontal dark mt-0">
+  <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
+    <ul class="navbar-nav">
+      <li class="nav-item mt-3">
+        <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Home</h6>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="/welcome">
+          <div class="ni ni-tag icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+          </div>
+          <span class="nav-link-text ms-1">Info</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " data-bs-toggle="collapse" href="#collapseMobil">
+          <div class="ni ni-bus-front-12 icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+          </div>
+          <span class="nav-link-text ms-1">Mobil</span>
+        </a>
+        <div id="collapseMobil" class="collapse">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a href="/mobil1" class="nav-link">
+                <span class="nav-link-text ms-1">Daihatsu</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/mobil2" class="nav-link">
+                <span class="nav-link-text ms-1">Honda</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/mobil3" class="nav-link">
+                <span class="nav-link-text ms-1">Mitsubishi</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/mobil4" class="nav-link">
+                <span class="nav-link-text ms-1">Nissan</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/mobil5" class="nav-link">
+                <span class="nav-link-text ms-1">Suzuki</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/mobil6" class="nav-link">
+                <span class="nav-link-text ms-1">Toyota</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="/app_spk">
+          <div class="ni ni-app icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+          </div>
+          <span class="nav-link-text ms-1">Aplikasi SPK</span>
+        </a>
+      </li>
+      {% if session.logged_in %}
+      <li class="nav-item mt-3">
+        <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Analisa SPK</h6>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link  " href="/readbobot">
+          <div class="ni ni-atom icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+          </div>
+          <span class="nav-link-text ms-1">Bobot</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link  " href="/matrix_criteria">
+          <div class="ni ni-books icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+          </div>
+          <span class="nav-link-text ms-1">Kriteria</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link  " data-bs-toggle="collapse" href="#collapseSub">
+          <div class="ni ni-bullet-list-67 icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+          </div>
+          <span class="nav-link-text ms-1">Sub Kriteria</span>
+        </a>
+        <div id="collapseSub" class="collapse">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a href="/matrix_sub_criteria1" class="nav-link">
+                <span class="nav-link-text ms-1">Harga</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/matrix_sub_criteria2" class="nav-link">
+                <span class="nav-link-text ms-1">Kapasitas Silinder</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/matrix_sub_criteria3" class="nav-link">
+                <span class="nav-link-text ms-1">Transmisi</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/matrix_sub_criteria4" class="nav-link">
+                <span class="nav-link-text ms-1">Jenis BBM</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/matrix_sub_criteria5" class="nav-link">
+                <span class="nav-link-text ms-1">Konsumsi BBM</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/matrix_sub_criteria6" class="nav-link">
+                <span class="nav-link-text ms-1">Jumlah Penumpang</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link  " href="/alternatif">
+          <div class="ni ni-vector icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+          </div>
+          <span class="nav-link-text ms-1">Alternatif</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link  " href="/penilaian">
+          <div class="ni ni-ruler-pencil icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+          </div>
+          <span class="nav-link-text ms-1">Penilaian</span>
+        </a>
+      </li>
+      {% endif %}
+      <li class="nav-item">
+        <a class="nav-link  " href="/rangking">
+          <div class="ni ni-trophy icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+          </div>
+          <span class="nav-link-text ms-1">Perangkingan</span>
+        </a>
+      {% if session.logged_in %}
+      </li>
+      <li class="nav-item mt-3">
+        <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Admin</h6>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link  " href="/data_mobil">
+          <div class="ni ni-delivery-fast icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+          </div>
+          <span class="nav-link-text ms-1">Data Mobil</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link  " href="/data_alternatif">
+          <div class="ni ni-money-coins icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+          </div>
+          <span class="nav-link-text ms-1">Data Alternatif</span>
+        </a>
+      </li>
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link  " href="javascript:;">-->
+<!--          <div class="ni ni-circle-08 icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">-->
+<!--          </div>-->
+<!--          <span class="nav-link-text ms-1">Profile</span>-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link  " href="javascript:;">-->
+<!--          <div class="ni ni-badge icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">-->
+<!--          </div>-->
+<!--          <span class="nav-link-text ms-1">Register</span>-->
+<!--        </a>-->
+<!--      </li>-->
+      {% endif %}
+    </ul>
+  </div>
+  <div class="sidenav-footer mx-3 ">
+    <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
+      <div class="card-body text-start p-3 w-100">
+        <div class="copyright text-center text-sm text-muted text-lg-start">
+          © <script>
+          document.write(new Date().getFullYear())
+          </script>,
+          made with <i class="fa fa-heart"></i> by
+          <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+          for a better web.
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>

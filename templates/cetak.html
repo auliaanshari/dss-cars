@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static', filename='/assets/img/apple-icon.png') }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='/assets/img/favicon.png') }}">
+  <title>
+    Sistem Pendukung Keputusan Pemilihan Mobil
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link href="{{ url_for('static', filename='/assets/css/nucleo-icons.css') }}" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='/assets/css/nucleo-svg.css') }}" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link href="{{ url_for('static', filename='/assets/css/nucleo-svg.css') }}" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="{{ url_for('static', filename='/assets/css/soft-ui-dashboard.css') }}" rel="stylesheet" />
+</head>
+<body>
+    {% for item in rows %}
+    <div class="card-body border">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="/static/image/{{ item[15] }}" class="" style="object-fit: cover;" width="500" height="300" align="right" alt="main_logo">
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Rank</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[0]}}</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Merk</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[4]}}</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Jenis</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[5]}}</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Model</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[6]}}</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Varian</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[7]}}</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Harga</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[8]}}</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Kapasitas Silinder</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[9]}}</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Transmisi</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[10]}}</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Jenis BBM</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[12]}}</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Konsumsi BBM</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[13]}}</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Kapasitas Penumpang</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[11]}}</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Jumlah Silinder</span>
+            </div>
+            <div class="col-md-6">
+              <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[14]}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    {% endfor %}
+  <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
+  <!--   Core JS Files   -->
+  <script src="{{ url_for('static', filename='/assets/js/core/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='/assets/js/core/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='/assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='/assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
+  <script>
+    var css = '@page { size: 29.5cm 21cm;margin: 1cm 1cm 1cm 1cm; }',
+        head = document.head || document.getElementsByTagName('head')[0],
+        style = document.createElement('style');
+
+    style.type = 'text/css';
+    style.media = 'print';
+
+    if (style.styleSheet){
+      style.styleSheet.cssText = css;
+    } else {
+      style.appendChild(document.createTextNode(css));
+    }
+
+    head.appendChild(style);
+
+    window.print();
+  </script>
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="{{ url_for('static', filename='/assets/js/soft-ui-dashboard.min.js') }}"></script>
+</body>
+</html>

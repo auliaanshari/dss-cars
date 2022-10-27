@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+  <!-- Navbar -->
+  <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+    <div class="container-fluid py-1 px-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/welcome">Home</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Aplikasi SPK</li>
+        </ol>
+        <h6 class="font-weight-bolder mb-0">Aplikasi SPK</h6>
+      </nav>
+      <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+        <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+        </div>
+        <ul class="navbar-nav  justify-content-end">
+          <li class="nav-item dropdown pe-2 d-flex align-items-center">
+            <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-user cursor-pointer"></i>
+              <span class="d-sm-inline d-none">{% if session['logged_in'] == True %}Admin{% else %}Guest{% endif %}</span>
+            </a>
+            <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+              <li class="mb-2">
+                <a class="dropdown-item border-radius-md" href="/logout">
+                  <div class="d-flex py-1">
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6 class="text-sm font-weight-normal mb-1">
+                        <span class="font-weight-bold">Logout</span>
+                      </h6>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <div class="container-fluid py-4">
+    <form action="/create_bobot" method="post">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-header pb-0">
+              <div class="row">
+                <div class="col-md-8"><h6>Pilih Prioritas Kriteria</h6></div>
+                <div class="col-md-4" align="right">
+                  <button type="reset" value="Reset" class="btn btn-outline-primary" align="right">Reset</button>
+                </div>
+              </div>
+            </div>
+            <div class="card-body pt-0">
+              <div class="form-group">
+                <label for="c01">Harga</label>
+                <select class="form-control" id="c01" name="harga" required>
+                  <option value=''>Pilih Prioritas</option>
+                  <option value=9>Sangat Penting</option>
+                  <option value=7>Penting</option>
+                  <option value=5>Netral</option>
+                  <option value=3>Tidak Penting</option>
+                  <option value=1>Sangat Tidak Penting</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="c02">Kapasitas Silinder</label>
+                <select class="form-control" id="c02" name="cc" required>
+                  <option value=''>Pilih Prioritas</option>
+                  <option value=9>Sangat Penting</option>
+                  <option value=7>Penting</option>
+                  <option value=5>Netral</option>
+                  <option value=3>Tidak Penting</option>
+                  <option value=1>Sangat Tidak Penting</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="c03">Transmisi</label>
+                <select class="form-control" id="c03" name="transmisi" required>
+                  <option value=''>Pilih Prioritas</option>
+                  <option value=9>Sangat Penting</option>
+                  <option value=7>Penting</option>
+                  <option value=5>Netral</option>
+                  <option value=3>Tidak Penting</option>
+                  <option value=1>Sangat Tidak Penting</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="c04">Jenis BBM</label>
+                <select class="form-control" id="c04" name="jenis_bbm" required>
+                  <option value=''>Pilih Prioritas</option>
+                  <option value=9>Sangat Penting</option>
+                  <option value=7>Penting</option>
+                  <option value=5>Netral</option>
+                  <option value=3>Tidak Penting</option>
+                  <option value=1>Sangat Tidak Penting</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="c05">Konsumsi BBM</label>
+                <select class="form-control" id="c05" name="konsumsi_bbm" required>
+                  <option value=''>Pilih Prioritas</option>
+                  <option value=9>Sangat Penting</option>
+                  <option value=7>Penting</option>
+                  <option value=5>Netral</option>
+                  <option value=3>Tidak Penting</option>
+                  <option value=1>Sangat Tidak Penting</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="c06">Kapasitas Penumpang</label>
+                <select class="form-control" id="c06" name="penumpang" required>
+                  <option value=''>Pilih Prioritas</option>
+                  <option value=9>Sangat Penting</option>
+                  <option value=7>Penting</option>
+                  <option value=5>Netral</option>
+                  <option value=3>Tidak Penting</option>
+                  <option value=1>Sangat Tidak Penting</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-header pb-0">
+              <div class="row">
+                <div class="col-md-8"><h6>Pilih Skala Sub Kriteria</h6></div>
+                <div class="col-md-4" align="right">
+                  <button class="btn btn-outline-primary" type="button" align="right">Reset</button>
+                </div>
+              </div>
+            </div>
+            <div class="card-body pt-0">
+              <div class="form-group">
+                <label for="sc01">Harga</label>
+                <select class="form-control" id="sc01" name="sub_harga" required>
+                  <option value=''>Pilih Skala</option>
+                  <option value=1>Murah (<350 juta)</option>
+                  <option value=2>Sedang (350 juta - 700 juta)</option>
+                  <option value=3>Mahal (>700 juta)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="sc02">Kapasitas Silinder</label>
+                <select class="form-control" id="sc02" name="sub_cc" required>
+                  <option value=''>Pilih Skala</option>
+                  <option value=1>Rendah (<1200cc)</option>
+                  <option value=2>Sedang (1200cc - 1800cc)</option>
+                  <option value=3>Tinggi (>1800cc)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="sc03">Transmisi</label>
+                <select class="form-control" id="sc03" name="sub_transmisi" required>
+                  <option value=''>Pilih Skala</option>
+                  <option value=1>Automatic</option>
+                  <option value=2>Manual</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="sc04">Jenis BBM</label>
+                <select class="form-control" id="sc04" name="sub_jenis_bbm" required>
+                  <option value=''>Pilih Skala</option>
+                  <option value=1>Bensin</option>
+                  <option value=2>Diesel</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="sc05">Konsumsi BBM</label>
+                <select class="form-control" id="sc05" name="sub_konsumsi_bbm" required>
+                  <option value=''>Pilih Skala</option>
+                  <option value=1>Irit (>18.5 kmpl)</option>
+                  <option value=2>Sedang (11 kmpl - 18.5 kmpl)</option>
+                  <option value=3>Boros (<11 kmpl)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="sc06">Kapasitas Penumpang</label>
+                <select class="form-control" id="sc06" name="sub_penumpang" required>
+                  <option value=''>Pilih Skala</option>
+                  <option value=1>Sedikit (<3 orang)</option>
+                  <option value=2>Sedang (3 - 7 orang)</option>
+                  <option value=3>Banyak (>7 orang)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-round bg-gradient-primary btn-lg w-50 mt-4 mb-0">Submit</button>
+      </div>
+    </form>
+  </div>
+</main>
+{% endblock %}
