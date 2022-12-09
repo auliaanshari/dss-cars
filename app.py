@@ -10,7 +10,7 @@ app.secret_key = "randajuliomeza1611523016"
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'root'
-app.config['MYSQL_DB'] = 'crudpy'
+app.config['MYSQL_DB'] = 'dss_cars'
 
 mysql = MySQL(app)
 
@@ -84,7 +84,7 @@ def mobil4():
     return render_template('mobil.html', rows=rows, nn=nn)
 
 @app.route('/mobil5', methods = ['POST', 'GET'])
-def mobil():
+def mobil5():
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM mobil WHERE merk = 'SUZUKI'")
     rows = cur.fetchall()
@@ -1022,6 +1022,133 @@ def sub_consistency_ratio6(sum, prio):
           'Consistency Index': consistency_index,
           'Consistency Ratio': consistency_ratio}
     return cr
+
+@app.route('/showroom1', methods = ['POST', 'GET'])
+def showroom1():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM showroom WHERE id_showroom = 1")
+    rows = cur.fetchall()
+    cur.close()
+    nn = "Daihatsu"
+    return render_template('showroom.html', rows=rows, nn=nn)
+
+@app.route('/showroom2', methods = ['POST', 'GET'])
+def showroom2():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM showroom WHERE id_showroom = 2")
+    rows = cur.fetchall()
+    cur.close()
+    nn = "Honda"
+    return render_template('showroom.html', rows=rows, nn=nn)
+
+@app.route('/showroom3', methods = ['POST', 'GET'])
+def showroom3():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM showroom WHERE id_showroom = 3")
+    rows = cur.fetchall()
+    cur.close()
+    nn = "Mitsubishi"
+    return render_template('showroom.html', rows=rows, nn=nn)
+
+@app.route('/showroom4', methods = ['POST', 'GET'])
+def showroom4():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM showroom WHERE id_showroom = 4")
+    rows = cur.fetchall()
+    cur.close()
+    nn = "Nissan"
+    return render_template('showroom.html', rows=rows, nn=nn)
+
+@app.route('/showroom5', methods = ['POST', 'GET'])
+def showroom5():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM showroom WHERE id_showroom = 5")
+    rows = cur.fetchall()
+    cur.close()
+    nn = "Suzuki"
+    return render_template('showroom.html', rows=rows, nn=nn)
+
+@app.route('/showroom6', methods = ['POST', 'GET'])
+def showroom6():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM showroom WHERE id_showroom = 6")
+    rows = cur.fetchall()
+    cur.close()
+    nn = "Toyota"
+    return render_template('showroom.html', rows=rows, nn=nn)
+
+@app.route('/data_showroom', methods = ['POST', 'GET'])
+def datashowroom():
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT * FROM showroom')
+    rows = cur.fetchall()
+    cur.close()
+    return render_template('datashowroom.html', rows=rows)
+
+@app.route('/create_showroom', methods = ['POST', 'GET'])
+def create_showroom():
+    if request.method == 'POST':
+        inputnama = request.form['inputnama']
+        inputalamat = request.form['inputalamat']
+        inputkodepos = int(request.form['inputkodepos'])
+        inputjambuka = request.form['inputjambuka']
+        inputkontak = request.form['inputkontak']
+        inputgambar = request.form['inputgambar']
+        inputlink = request.form['inputlink']
+        item = (inputnama, inputalamat, inputkodepos, inputjambuka, inputkontak, inputgambar, inputlink)
+        cur = mysql.connection.cursor()
+        cur.execute(
+            '''INSERT INTO showroom
+            (nama, alamat, kode_pos, jam_buka,
+            kontak, image, link)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)''', item)
+        mysql.connection.commit()
+        cur.close()
+        flash('Data added successfully', 'success')
+        return redirect(url_for('datashowroom'))
+
+    return render_template('datashowroom.html')
+
+@app.route('/update_showroom', methods = ['POST', 'GET'])
+def update_showroom():
+    if request.method == 'POST':
+        id_showroom = int(request.form['id_showroom'])
+        editnama = request.form['editnama']
+        editalamat = request.form['editalamat']
+        editkodepos = int(request.form['editkodepos'])
+        editjambuka = request.form['editjambuka']
+        editkontak = request.form['editkontak']
+        editgambar = request.form['editgambar']
+        editlink = request.form['editlink']
+        item = (editnama, editalamat, editkodepos, editjambuka, editkontak, editgambar, editlink, id_showroom)
+        cur = mysql.connection.cursor()
+        cur.execute(
+            '''UPDATE showroom
+            SET
+            nama = %s, alamat = %s, kode_pos = %s,
+            jam_buka = %s, kontak = %s, image = %s,
+            link = %s WHERE id_showroom = %s''', item)
+        mysql.connection.commit()
+        cur.close()
+        flash('Data updated successfully', 'success')
+        return redirect(url_for('datashowroom'))
+
+    return render_template('datashowroom.html')
+
+@app.route('/delete_showroom', methods = ['POST', 'GET'])
+def delete_showroom():
+    if request.method == 'POST':
+        id_showroom_todel = int(request.form['id_showroom_todel'])
+        cur = mysql.connection.cursor()
+        cur.execute(
+            '''DELETE FROM showroom
+            WHERE id_showroom = %s''', (id_showroom_todel,))
+        mysql.connection.commit()
+        cur.close()
+        flash('Data deleted successfully', 'success')
+        return redirect(url_for('datashowroom'))
+
+    return render_template('datashowroom.html')
 
 if __name__ == "__main__":
     app.run()

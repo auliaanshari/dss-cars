@@ -1,0 +1,323 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+  <div class="container-fluid justify-content-center d-flex">
+    <div class="w-25 " >
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+          {% if messages %}
+              {% for category, message in messages %}
+                  <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                      {{ message }}
+                  </div>
+              {% endfor %}
+          {% endif %}
+        {% endwith %}
+    </div>
+  </div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+    <div class="container-fluid py-1 px-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/data_mobil">Admin</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Data Showroom</li>
+        </ol>
+        <h6 class="font-weight-bolder mb-0">Data Showroom</h6>
+      </nav>
+      <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+        <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+        </div>
+        <ul class="navbar-nav  justify-content-end">
+          <li class="nav-item dropdown pe-2 d-flex align-items-center">
+            <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-user cursor-pointer"></i>
+              <span class="d-sm-inline d-none">{% if session['logged_in'] == True %}Admin{% else %}Guest{% endif %}</span>
+            </a>
+            <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+              <li class="mb-2">
+                <a class="dropdown-item border-radius-md" href="/logout">
+                  <div class="d-flex py-1">
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6 class="text-sm font-weight-normal mb-1">
+                        <span class="font-weight-bold">Logout</span>
+                      </h6>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <div class="container-fluid py-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+            <div class="row">
+              <div class="col-md-8"><h6>Data Showroom</h6></div>
+              <div class="col-md-4" align="right">
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal-tambah" type="button" align="right">Tambah Data</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">ID</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Nama</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Alamat</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Jam Buka</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Kontak</th>
+                    <th class="text-center text-uppercase text-primary text-xxs font-weight-bolder ">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for item in rows %}
+                  <tr>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-center text-uppercase text-primary text-xxs font-weight-bolder">{{item[0]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[1]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[2]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[4]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">{{item[5]}}</span>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <button type="button" class="badge badge-sm bg-gradient-info" data-bs-toggle="modal" data-original-title="detail showroom" data-bs-target="#modal-detail-{{item[0]}}">
+                        Detail
+                      </button>
+                      <button type="button" class="badge badge-sm bg-gradient-success" data-bs-toggle="modal" data-original-title="edit showroom" data-bs-target="#modal-edit-{{item[0]}}">
+                        Edit
+                      </button>
+                      <button type="button" class="badge badge-sm bg-gradient-danger" data-bs-toggle="modal" data-original-title="delete showroom" data-bs-target="#modal-delete-{{item[0]}}">
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                  <div class="modal fade" id="modal-detail-{{item[0]}}" tabindex="-1" role="dialog" aria-labelledby="modal-detail" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                      <div class="modal-content">
+                        <div class="modal-body p-0">
+                          <div class="card card-plain">
+                            <div class="card-header pb-0 text-left">
+                              <h3 class="font-weight-bolder text-primary text-gradient">Detail Data Showroom</h3>
+                            </div>
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="text-center">
+                                    <img src="/static/imageshowroom/{{ item[6] }}" class="h-80 w-80" alt="main_logo">
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">ID</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[0]}}</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Nama</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[1]}}</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Alamat</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[2]}}</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Kode Pos</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[3]}}</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Jam Buka</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[4]}}</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Kontak</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[5]}}</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="text-center">
+                                <button type="button" class="btn btn-round bg-gradient-secondary btn-lg w-50 mt-4 mb-0" data-bs-dismiss="modal" >Cancel</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade" id="modal-edit-{{item[0]}}" tabindex="-1" role="dialog" aria-labelledby="modal-edit" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                      <div class="modal-content">
+                        <div class="modal-body p-0">
+                          <div class="card card-plain">
+                            <div class="card-header pb-0 text-left">
+                              <h3 class="font-weight-bolder text-primary text-gradient">Edit Data Mobil</h3>
+                            </div>
+                            <div class="card-body">
+                              <form action="/update_showroom" method="post">
+                                <div class="form-group">
+                                  <label for="editnama">Nama</label>
+                                  <input value={{ item[0] }} type="hidden" class="form-control" id="id_showroom" name="id_showroom" required>
+                                  <input value={{ item[1] }} type="text" class="form-control" id="editnama" name="editnama" placeholder="Nama" required>
+                                </div>
+                                <div class="form-group">
+                                  <label for="editalamat">Alamat</label>
+                                  <input value={{ item[2] }} type="text" class="form-control" id="editalamat" name="editalamat" placeholder="Alamat" required>
+                                </div>
+                                <div class="form-group">
+                                  <label for="editkodepos">Kode Pos</label>
+                                  <input value={{ item[3] }} type="number" class="form-control" id="editkodepos" name="editkodepos" placeholder="0123456789" required>
+                                </div>
+                                <div class="form-group">
+                                  <label for="editjambuka">Jam Buka</label>
+                                  <input value={{ item[4] }} type="text" class="form-control" id="editjambuka" name="editjambuka" placeholder="Jam Buka" required>
+                                </div>
+                                <div class="form-group">
+                                  <label for="editkontak">Kontak</label>
+                                  <input value={{ item[5] }} type="text" class="form-control" id="editkontak" name="editkontak" placeholder="0123456789" required>
+                                </div>
+                                <div class="form-group">
+                                  <label for="editgambar">Gambar</label>
+                                  <input value={{ item[6] }} type="file" class="form-control" id="editgambar" name="editgambar" required>
+                                </div>
+                                <div class="form-group">
+                                  <label for="editlink">Kontak</label>
+                                  <input value={{ item[7] }} type="text" class="form-control" id="editlink" name="editlink" placeholder="a-z,!-@,0-9" required>
+                                </div>
+                                <div class="text-center">
+                                  <button type="submit" class="btn btn-round bg-gradient-primary btn-lg w-50 mt-4 mb-0">Submit</button>
+                                  <button type="button" class="btn btn-round bg-gradient-secondary btn-lg w-50 mt-4 mb-0" data-bs-dismiss="modal" >Cancel</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade" id="modal-delete-{{item[0]}}" tabindex="-1" role="dialog" aria-labelledby="modal-delete" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                      <div class="modal-content">
+                        <div class="modal-body p-0">
+                          <div class="card card-plain">
+                            <div class="card-header pb-0 text-left">
+                              <h3 class="font-weight-bolder text-primary text-gradient">Delete Data Showroom</h3>
+                            </div>
+                            <div class="card-body">
+                              <form action="/delete_showroom" method="post">
+                                <div class="row">
+                                  <div class="col-12">
+                                    <div class="form-group">
+                                      <input value={{ item[0] }} type="hidden" class="form-control" id="id_showroom_todel" name="id_showroom_todel" required>
+                                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">Are you sure to delete showroom with :</span><br><br>
+                                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">ID : {{item[0]}}</span><br>
+                                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">Nama : {{item[1]}}</span><br>
+                                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">Alamat : {{item[2]}}</span><br>
+                                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">Kode Pos : {{item[3]}}</span><br>
+                                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">Jam Buka : {{item[4]}}</span><br>
+                                      <span class="text-center text-uppercase text-dark text-xxs font-weight-bolder">Kontak : {{item[5]}}</span><br>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="text-center">
+                                  <button type="submit" class="btn btn-round bg-gradient-primary btn-lg w-50 mt-4 mb-0">Yes</button>
+                                  <button type="button" class="btn btn-round bg-gradient-secondary btn-lg w-50 mt-4 mb-0" data-bs-dismiss="modal" >Cancel</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-tambah" tabindex="-1" role="dialog" aria-labelledby="modal-tambah" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <div class="card card-plain">
+              <div class="card-header pb-0 text-left">
+                <h3 class="font-weight-bolder text-primary text-gradient">Tambah Data Showroom</h3>
+              </div>
+              <div class="card-body">
+                <form action="/create_showroom" method="post" role="form text-left">
+                  <div class="form-group">
+                    <label for="inputnama">Nama</label>
+                    <input type="text" class="form-control" id="inputnama" name="inputnama" placeholder="Nama" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputalamat">Alamat</label>
+                    <input type="text" class="form-control" id="inputalamat" name="inputalamat" placeholder="Alamat" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputkodepos">Kode Pos</label>
+                    <input type="number" class="form-control" id="inputkodepos" name="inputkodepos" placeholder="0123456789" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputjambuka">Jam Buka</label>
+                    <input type="text" class="form-control" id="inputjambuka" name="inputjambuka" placeholder="Jam Buka" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputkontak">Kontak</label>
+                    <input type="text" class="form-control" id="inputkontak" name="inputkontak" placeholder="0123456789" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputgambar">Gambar</label>
+                    <input type="file" class="form-control" id="inputgambar" name="inputgambar" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputlink">Link</label>
+                    <input type="text" class="form-control" id="inputlink" name="inputlink" placeholder="a-z,!-@,0-9" required>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-round bg-gradient-primary btn-lg w-50 mt-4 mb-0">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+{% endblock %}

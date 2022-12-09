@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 21, 2022 at 08:18 AM
--- Server version: 8.0.30-0ubuntu0.20.04.2
+-- Generation Time: Dec 10, 2022 at 02:04 AM
+-- Server version: 8.0.31-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `crudpy`
+-- Database: `dss_cars`
 --
 
 -- --------------------------------------------------------
@@ -531,11 +531,11 @@ CREATE TABLE `bobot_criteria` (
 
 INSERT INTO `bobot_criteria` (`id_criteria`, `bobot`) VALUES
 ('C01', 9),
-('C02', 1),
-('C03', 7),
-('C04', 7),
-('C05', 9),
-('C06', 3);
+('C02', 7),
+('C03', 5),
+('C04', 3),
+('C05', 1),
+('C06', 9);
 
 -- --------------------------------------------------------
 
@@ -553,8 +553,8 @@ CREATE TABLE `bobot_sub_criteria` (
 --
 
 INSERT INTO `bobot_sub_criteria` (`id_sub_criteria`, `bobot`) VALUES
-('SC011', 7),
-('SC012', 9),
+('SC011', 9),
+('SC012', 7),
 ('SC013', 5),
 ('SC021', 9),
 ('SC022', 7),
@@ -566,9 +566,9 @@ INSERT INTO `bobot_sub_criteria` (`id_sub_criteria`, `bobot`) VALUES
 ('SC051', 9),
 ('SC052', 7),
 ('SC053', 5),
-('SC061', 5),
-('SC062', 9),
-('SC063', 7);
+('SC061', 9),
+('SC062', 7),
+('SC063', 5);
 
 -- --------------------------------------------------------
 
@@ -612,93 +612,94 @@ CREATE TABLE `mobil` (
   `jenis_bbm` varchar(10) NOT NULL,
   `konsumsi_bbm` double NOT NULL,
   `jumlah_silinder` int NOT NULL,
-  `image` varchar(50) NOT NULL
+  `image` varchar(50) NOT NULL,
+  `id_showroom` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `mobil`
 --
 
-INSERT INTO `mobil` (`id_mobil`, `merk`, `jenis`, `model`, `varian`, `harga`, `cc`, `transmisi`, `penumpang`, `jenis_bbm`, `konsumsi_bbm`, `jumlah_silinder`, `image`) VALUES
-(1, 'DAIHATSU', 'Hatchback', 'Ayla', '1.2 R DLX MC', 148550000, 1197, 'MT', 5, 'Bensin', 21, 4, 'ayla.png'),
-(2, 'DAIHATSU', 'Hatchback', 'Sirion', 'STD E4', 207800000, 1329, 'MT', 5, 'Bensin', 12.8, 4, 'sirion.jpg'),
-(3, 'DAIHATSU', 'Hatchback', 'Sirion', 'STD MC E4', 223100000, 1329, 'AT', 5, 'Bensin', 12.8, 4, 'sirion.jpg'),
-(4, 'DAIHATSU', 'MPV', 'Sigra', '1.2 X DLX MC', 158700000, 1197, 'AT', 7, 'Bensin', 26.3, 4, 'sigra.jpg'),
-(5, 'DAIHATSU', 'MPV', 'Xenia', 'R 1.3 STD', 205200000, 1329, 'AT', 7, 'Bensin', 9, 4, 'xenia.png'),
-(6, 'DAIHATSU', 'Pick Up', 'Gran Max', 'PU 1.3 STD FH E3', 146400000, 1298, 'MT', 2, 'Bensin', 14.3, 4, 'granmax.png'),
-(7, 'DAIHATSU', 'SUV', 'Rocky', '1.2 X', 208800000, 1198, 'AT', 5, 'Bensin', 18, 3, 'rocky.png'),
-(8, 'DAIHATSU', 'SUV', 'Terios', 'R IDS', 234500000, 1496, 'MT', 7, 'Bensin', 12.5, 4, 'terios-r.jpg'),
-(9, 'DAIHATSU', 'SUV', 'Terios', 'X DLX IDS', 224300000, 1496, 'AT', 7, 'Bensin', 12.5, 4, 'terios-x.png'),
-(10, 'DAIHATSU', 'Van', 'Luxio', '1.5 D MC E4', 194300000, 1495, 'MT', 8, 'Bensin', 10.1, 4, 'luxio.jpg'),
-(11, 'HONDA', 'Hatchback', 'Brio', 'New RS', 198200000, 1199, 'AT', 5, 'Bensin', 31, 4, 'brio-rs.jpg'),
-(12, 'HONDA', 'Hatchback', 'Brio', 'New RS', 183300000, 1199, 'MT', 5, 'Bensin', 30, 4, 'brio-rs.jpg'),
-(13, 'HONDA', 'Hatchback', 'Brio', 'Satya E', 175400000, 1199, 'AT', 5, 'Bensin', 16.9, 4, 'brio-satya.jpg'),
-(14, 'HONDA', 'Hatchback', 'Brio', 'Satya S', 151400000, 1199, 'MT', 5, 'Bensin', 16.9, 4, 'brio-satya.jpg'),
-(15, 'HONDA', 'Hatchback', 'City', 'RS Hatchback', 302000000, 1598, 'AT', 5, 'Bensin', 24.8, 4, 'city.jpg'),
-(16, 'HONDA', 'Hatchback', 'City', 'RS Hatchback', 292000000, 1598, 'MT', 5, 'Bensin', 24.8, 4, 'city.jpg'),
-(17, 'HONDA', 'Hatchback', 'Civic', 'Hatchback RS', 512800000, 1598, 'AT', 5, 'Bensin', 14, 4, 'civic-h.jpg'),
-(18, 'HONDA', 'Hatchback', 'HR-V', '1.5 L S', 294700000, 1497, 'MT', 5, 'Bensin', 18, 4, 'hrv-l.png'),
-(19, 'HONDA', 'Hatchback', 'HR-V', '1.8 L Prestige', 409800000, 1799, 'AT', 5, 'Bensin', 11.5, 4, 'hrv-prestige.jpg'),
-(20, 'HONDA', 'MPV', 'BR-V', 'All New', 302100000, 1497, 'AT', 7, 'Bensin', 21, 4, 'brv.jpg'),
-(21, 'HONDA', 'MPV', 'Mobilio', 'S', 197600000, 1496, 'MT', 7, 'Bensin', 22.8, 4, 'mobilio.png'),
-(22, 'HONDA', 'MPV', 'Odyssey', '2.4 L', 888000000, 2356, 'AT', 7, 'Bensin', 8.3, 4, 'odyssey.webp'),
-(23, 'HONDA', 'Sedan', 'Accord', '1.5 L', 749000000, 1497, 'AT', 5, 'Bensin', 12, 4, 'accord.jpg'),
-(24, 'HONDA', 'Sedan', 'Civic', '1.5 L VTEC Turbo', 533000000, 1498, 'AT', 5, 'Bensin', 20, 4, 'civic-turbo.jpg'),
-(25, 'HONDA', 'Sedan', 'Civic', 'Type R 6  Speed', 1177000000, 1996, 'MT', 5, 'Bensin', 14, 4, 'civic-r.jpg'),
-(26, 'HONDA', 'SUV', 'CR-V', '1.5 L Turbo', 500000000, 1498, 'AT', 7, 'Bensin', 9.8, 4, 'crv-turbo.jpg'),
-(27, 'HONDA', 'SUV', 'CR-V', '2.0 L i-VTEC', 470600000, 1997, 'AT', 5, 'Bensin', 16, 4, 'crv-vtec.png'),
-(28, 'MITSUBISHI', 'MPV', 'Xpander', 'Sport', 261050000, 1499, 'MT', 7, 'Bensin', 10.5, 4, 'xpander-s.jpg'),
-(29, 'MITSUBISHI', 'MPV', 'Xpander', 'Ultimate', 274820000, 1499, 'AT', 7, 'Bensin', 10.5, 4, 'xpander-u.jpeg'),
-(30, 'MITSUBISHI', 'Pick Up', 'Triton', 'DC HDX 4x4', 382000000, 2477, 'MT', 5, 'Diesel', 16, 4, 'triton-dc.jpg'),
-(31, 'MITSUBISHI', 'Pick Up', 'Triton', 'SC GLX 4x2', 263000000, 2442, 'MT', 2, 'Diesel', 15, 4, 'triton-sc.jpg'),
-(32, 'MITSUBISHI', 'SUV', 'Eclipse', 'Cross Ultimate', 502100000, 1499, 'AT', 5, 'Bensin', 14.9, 4, 'eclipse.jpg'),
-(33, 'MITSUBISHI', 'SUV', 'Pajero', 'Sport Dakar 4×2', 496000000, 2442, 'AT', 7, 'Diesel', 12.6, 4, 'pajero-dakar.jpg'),
-(34, 'MITSUBISHI', 'SUV', 'Pajero', 'Sport Exceed 4×2', 535000000, 2477, 'MT', 7, 'Diesel', 12.6, 4, 'pajero-exceed.jpg'),
-(35, 'MITSUBISHI', 'SUV', 'Pajero', 'Sport GLX 4×4', 495000000, 2442, 'AT', 7, 'Diesel', 9.8, 4, 'pajero-sport.jpg'),
-(36, 'NISSAN', 'MPV', 'Serena', '2.0 L Type HWS', 490750000, 1997, 'AT', 7, 'Bensin', 16.1, 4, 'serena.png'),
-(37, 'NISSAN', 'SUV', 'Kicks E Power', '1.2L', 477000000, 1198, 'AT', 5, 'Bensin', 23.6, 4, 'kicks.jpg'),
-(38, 'NISSAN', 'SUV', 'Livina', '1.5 Type EL', 247800000, 1499, 'MT', 7, 'Bensin', 12, 4, 'livina.png'),
-(39, 'NISSAN', 'SUV', 'Livina', '1.5 Type VE', 279700000, 1499, 'AT', 7, 'Bensin', 11.5, 4, 'livina.png'),
-(40, 'NISSAN', 'SUV', 'Magnite Upper', 'Premium', 259900000, 999, 'AT', 5, 'Bensin', 17, 3, 'magnite.jpg'),
-(41, 'NISSAN', 'SUV', 'Magnite Upper', 'Premium', 247400000, 999, 'MT', 5, 'Bensin', 20, 3, 'magnite.jpg'),
-(42, 'NISSAN', 'SUV', 'Terra', 'EL 4x2', 488900000, 2488, 'MT', 7, 'Diesel', 8.8, 4, 'terra-el.png'),
-(43, 'NISSAN', 'SUV', 'Terra', 'VT 4x2', 515500000, 2488, 'AT', 7, 'Diesel', 8.8, 4, 'terra-vl.png'),
-(44, 'NISSAN', 'SUV', 'Xtrail', '2.5 VL', 591000000, 2488, 'AT', 7, 'Bensin', 8.6, 7, 'xtrail.png'),
-(45, 'SUZUKI', 'Crossover', 'SX4', 'SCross', 320500000, 1491, 'AT', 5, 'Bensin', 14.4, 4, 'sx4.jpg'),
-(46, 'SUZUKI', 'Hatchback', 'Baleno', 'New', 252500000, 1373, 'AT', 5, 'Bensin', 20, 4, 'baleno.png'),
-(47, 'SUZUKI', 'Hatchback', 'Ignis', 'GL ', 196000000, 1197, 'AT', 5, 'Bensin', 17.2, 4, 'ignis.jpeg'),
-(48, 'SUZUKI', 'Hatchback', 'Ignis', 'GL ', 186000000, 1197, 'MT', 5, 'Bensin', 17.2, 4, 'ignis.jpeg'),
-(49, 'SUZUKI', 'Hatchback', 'Wagon', 'GL ', 138000000, 998, 'AT', 5, 'Bensin', 21.5, 3, 'wagon.jpg'),
-(50, 'SUZUKI', 'Hatchback', 'Wagon', 'GL ', 147800000, 998, 'MT', 5, 'Bensin', 21, 3, 'wagon.jpg'),
-(51, 'SUZUKI', 'MPV', 'APV', 'SGX', 219500000, 1493, 'MT', 7, 'Bensin', 10.1, 4, 'apv.jpg'),
-(52, 'SUZUKI', 'MPV', 'Ertiga', 'GL ', 241500000, 1462, 'AT', 7, 'Bensin', 16.7, 4, 'ertiga.jpg'),
-(53, 'SUZUKI', 'Sedan', 'Ciaz', 'Ciaz', 323500000, 1373, 'MT', 5, 'Bensin', 21.4, 4, 'ciaz.jpg'),
-(54, 'SUZUKI', 'SUV', 'Jimmy', 'Standart', 440000000, 1462, 'MT', 4, 'Bensin', 14, 4, 'jimmy.png'),
-(55, 'SUZUKI', 'SUV', 'XL 7', 'ZETA', 237100000, 1462, 'MT', 7, 'Bensin', 12.7, 4, 'xl7.jpg'),
-(56, 'TOYOTA', 'Hatchback', 'Agya', '1.2 G STD', 141200000, 1197, 'MT', 5, 'Bensin', 19, 4, 'agya-std.jpg'),
-(57, 'TOYOTA', 'Hatchback', 'Agya', 'AGYA 1.2 G A/T GR SPORT', 162390000, 1197, 'AT', 5, 'Bensin', 19, 4, 'agya-sport.png'),
-(58, 'TOYOTA', 'Hatchback', 'Yaris', '1.5S GR Sport', 274000000, 1496, 'AT', 5, 'Bensin', 17.2, 4, 'yaris.png'),
-(59, 'TOYOTA', 'MPV', 'Alphard', '3.5 Q', 1905250000, 3456, 'AT', 8, 'Bensin', 6.7, 6, 'alphard.jpg'),
-(60, 'TOYOTA', 'MPV', 'Avanza', '1.3 E STD LUX', 179650000, 1329, 'MT', 7, 'Bensin', 13, 4, 'avanza.jpg'),
-(61, 'TOYOTA', 'MPV', 'Calya', '1.2 G Lux', 162775000, 1197, 'AT', 7, 'Bensin', 28, 4, 'calya.jpg'),
-(62, 'TOYOTA', 'MPV', 'Calya', '1.2 G Lux', 150575000, 1197, 'MT', 7, 'Bensin', 25, 4, 'calya.jpg'),
-(63, 'TOYOTA', 'MPV', 'Kijang Innova', '2.0 G BSN LUXURY', 332300000, 1998, 'MT', 8, 'Bensin', 10, 4, 'innova-luxury.jpg'),
-(64, 'TOYOTA', 'MPV', 'Kijang Innova', '2.4 G  DSL', 343800000, 2393, 'MT', 8, 'Diesel', 17.8, 4, 'innova-dsl.png'),
-(65, 'TOYOTA', 'MPV', 'Kijang Innova', 'VENTURER 2.4 DSL', 462500000, 2393, 'AT', 8, 'Diesel', 17.8, 4, 'innova-venturer.jpg'),
-(66, 'TOYOTA', 'MPV', 'Voxy', '2', 506750000, 1987, 'AT', 7, 'Bensin', 16, 4, 'voxy.jpg'),
-(67, 'TOYOTA', 'Sedan', 'Altis', 'New G', 487800000, 1798, 'AT', 5, 'Bensin', 18, 4, 'altis.jpg'),
-(68, 'TOYOTA', 'Sedan', 'Camry', '2.5 L HYBRID', 844500000, 2494, 'AT', 5, 'Bensin', 18.4, 4, 'camry.jpg'),
-(69, 'TOYOTA', 'Sedan', 'Vios', 'New G', 260600000, 1496, 'MT', 5, 'Bensin', 14, 4, 'vios.jpeg'),
-(70, 'TOYOTA', 'Sport', 'FT86', '2.0 L TRD ', 820000000, 1998, 'AT', 2, 'Bensin', 13, 4, 'ft86.png'),
-(71, 'TOYOTA', 'Sport', 'FT86', '2.0 L TRD ', 783800000, 1998, 'MT', 2, 'Bensin', 12.8, 4, 'ft86.png'),
-(72, 'TOYOTA', 'Sport', 'Supra', 'GR SUPRA 3.0 L', 2147100000, 2998, 'AT', 2, 'Bensin', 10.2, 6, 'supra.jpeg'),
-(73, 'TOYOTA', 'SUV', 'C-Hr', 'HYBRID HV 1.8', 552540000, 1798, 'AT', 5, 'Bensin', 24, 4, 'chr.jfif'),
-(74, 'TOYOTA', 'SUV', 'Fortuner', '2.4 G 4X2 DSL LUX', 493000000, 2393, 'MT', 7, 'Diesel', 11.6, 4, 'fortuner-lux.jpg'),
-(75, 'TOYOTA', 'SUV', 'Fortuner', '2.7 SRZ 4X2 BSN GR SPORT', 555000000, 2694, 'AT', 7, 'Bensin', 9.6, 4, 'fortuner-sport.jpeg'),
-(76, 'TOYOTA', 'SUV', 'Land Cruiser', '200 FULL SPEC DSL', 2552250000, 4461, 'AT', 6, 'Diesel', 6, 8, 'landcruiser.jpg'),
-(77, 'TOYOTA', 'SUV', 'Raize', '1.0T', 230800000, 1000, 'MT', 5, 'Bensin', 18, 3, 'raize.jpg'),
-(78, 'TOYOTA', 'SUV', 'Raize', '1.0T GR Sport TSS', 276100000, 1000, 'AT', 5, 'Bensin', 18, 3, 'raize-sport.jpg'),
-(79, 'TOYOTA', 'SUV', 'Rush', '1.5 S A/T LUX GR SPORT', 262780000, 1496, 'AT', 7, 'Bensin', 11.3, 4, 'rush.jpg');
+INSERT INTO `mobil` (`id_mobil`, `merk`, `jenis`, `model`, `varian`, `harga`, `cc`, `transmisi`, `penumpang`, `jenis_bbm`, `konsumsi_bbm`, `jumlah_silinder`, `image`, `id_showroom`) VALUES
+(1, 'DAIHATSU', 'Hatchback', 'Ayla', '1.2 R DLX MC', 148550000, 1197, 'MT', 5, 'Bensin', 21, 4, 'ayla.png', 1),
+(2, 'DAIHATSU', 'Hatchback', 'Sirion', 'STD E4', 207800000, 1329, 'MT', 5, 'Bensin', 12.8, 4, 'sirion.jpg', 1),
+(3, 'DAIHATSU', 'Hatchback', 'Sirion', 'STD MC E4', 223100000, 1329, 'AT', 5, 'Bensin', 12.8, 4, 'sirion.jpg', 1),
+(4, 'DAIHATSU', 'MPV', 'Sigra', '1.2 X DLX MC', 158700000, 1197, 'AT', 7, 'Bensin', 26.3, 4, 'sigra.jpg', 1),
+(5, 'DAIHATSU', 'MPV', 'Xenia', 'R 1.3 STD', 205200000, 1329, 'AT', 7, 'Bensin', 9, 4, 'xenia.png', 1),
+(6, 'DAIHATSU', 'Pick Up', 'Gran Max', 'PU 1.3 STD FH E3', 146400000, 1298, 'MT', 2, 'Bensin', 14.3, 4, 'granmax.png', 1),
+(7, 'DAIHATSU', 'SUV', 'Rocky', '1.2 X', 208800000, 1198, 'AT', 5, 'Bensin', 18, 3, 'rocky.png', 1),
+(8, 'DAIHATSU', 'SUV', 'Terios', 'R IDS', 234500000, 1496, 'MT', 7, 'Bensin', 12.5, 4, 'terios-r.jpg', 1),
+(9, 'DAIHATSU', 'SUV', 'Terios', 'X DLX IDS', 224300000, 1496, 'AT', 7, 'Bensin', 12.5, 4, 'terios-x.png', 1),
+(10, 'DAIHATSU', 'Van', 'Luxio', '1.5 D MC E4', 194300000, 1495, 'MT', 8, 'Bensin', 10.1, 4, 'luxio.jpg', 1),
+(11, 'HONDA', 'Hatchback', 'Brio', 'New RS', 198200000, 1199, 'AT', 5, 'Bensin', 31, 4, 'brio-rs.jpg', 2),
+(12, 'HONDA', 'Hatchback', 'Brio', 'New RS', 183300000, 1199, 'MT', 5, 'Bensin', 30, 4, 'brio-rs.jpg', 2),
+(13, 'HONDA', 'Hatchback', 'Brio', 'Satya E', 175400000, 1199, 'AT', 5, 'Bensin', 16.9, 4, 'brio-satya.jpg', 2),
+(14, 'HONDA', 'Hatchback', 'Brio', 'Satya S', 151400000, 1199, 'MT', 5, 'Bensin', 16.9, 4, 'brio-satya.jpg', 2),
+(15, 'HONDA', 'Hatchback', 'City', 'RS Hatchback', 302000000, 1598, 'AT', 5, 'Bensin', 24.8, 4, 'city.jpg', 2),
+(16, 'HONDA', 'Hatchback', 'City', 'RS Hatchback', 292000000, 1598, 'MT', 5, 'Bensin', 24.8, 4, 'city.jpg', 2),
+(17, 'HONDA', 'Hatchback', 'Civic', 'Hatchback RS', 512800000, 1598, 'AT', 5, 'Bensin', 14, 4, 'civic-h.jpg', 2),
+(18, 'HONDA', 'Hatchback', 'HR-V', '1.5 L S', 294700000, 1497, 'MT', 5, 'Bensin', 18, 4, 'hrv-l.png', 2),
+(19, 'HONDA', 'Hatchback', 'HR-V', '1.8 L Prestige', 409800000, 1799, 'AT', 5, 'Bensin', 11.5, 4, 'hrv-prestige.jpg', 2),
+(20, 'HONDA', 'MPV', 'BR-V', 'All New', 302100000, 1497, 'AT', 7, 'Bensin', 21, 4, 'brv.jpg', 2),
+(21, 'HONDA', 'MPV', 'Mobilio', 'S', 197600000, 1496, 'MT', 7, 'Bensin', 22.8, 4, 'mobilio.png', 2),
+(22, 'HONDA', 'MPV', 'Odyssey', '2.4 L', 888000000, 2356, 'AT', 7, 'Bensin', 8.3, 4, 'odyssey.webp', 2),
+(23, 'HONDA', 'Sedan', 'Accord', '1.5 L', 749000000, 1497, 'AT', 5, 'Bensin', 12, 4, 'accord.jpg', 2),
+(24, 'HONDA', 'Sedan', 'Civic', '1.5 L VTEC Turbo', 533000000, 1498, 'AT', 5, 'Bensin', 20, 4, 'civic-turbo.jpg', 2),
+(25, 'HONDA', 'Sedan', 'Civic', 'Type R 6  Speed', 1177000000, 1996, 'MT', 5, 'Bensin', 14, 4, 'civic-r.jpg', 2),
+(26, 'HONDA', 'SUV', 'CR-V', '1.5 L Turbo', 500000000, 1498, 'AT', 7, 'Bensin', 9.8, 4, 'crv-turbo.jpg', 2),
+(27, 'HONDA', 'SUV', 'CR-V', '2.0 L i-VTEC', 470600000, 1997, 'AT', 5, 'Bensin', 16, 4, 'crv-vtec.png', 2),
+(28, 'MITSUBISHI', 'MPV', 'Xpander', 'Sport', 261050000, 1499, 'MT', 7, 'Bensin', 10.5, 4, 'xpander-s.jpg', 3),
+(29, 'MITSUBISHI', 'MPV', 'Xpander', 'Ultimate', 274820000, 1499, 'AT', 7, 'Bensin', 10.5, 4, 'xpander-u.jpeg', 3),
+(30, 'MITSUBISHI', 'Pick Up', 'Triton', 'DC HDX 4x4', 382000000, 2477, 'MT', 5, 'Diesel', 16, 4, 'triton-dc.jpg', 3),
+(31, 'MITSUBISHI', 'Pick Up', 'Triton', 'SC GLX 4x2', 263000000, 2442, 'MT', 2, 'Diesel', 15, 4, 'triton-sc.jpg', 3),
+(32, 'MITSUBISHI', 'SUV', 'Eclipse', 'Cross Ultimate', 502100000, 1499, 'AT', 5, 'Bensin', 14.9, 4, 'eclipse.jpg', 3),
+(33, 'MITSUBISHI', 'SUV', 'Pajero', 'Sport Dakar 4×2', 496000000, 2442, 'AT', 7, 'Diesel', 12.6, 4, 'pajero-dakar.jpg', 3),
+(34, 'MITSUBISHI', 'SUV', 'Pajero', 'Sport Exceed 4×2', 535000000, 2477, 'MT', 7, 'Diesel', 12.6, 4, 'pajero-exceed.jpg', 3),
+(35, 'MITSUBISHI', 'SUV', 'Pajero', 'Sport GLX 4×4', 495000000, 2442, 'AT', 7, 'Diesel', 9.8, 4, 'pajero-sport.jpg', 3),
+(36, 'NISSAN', 'MPV', 'Serena', '2.0 L Type HWS', 490750000, 1997, 'AT', 7, 'Bensin', 16.1, 4, 'serena.png', 4),
+(37, 'NISSAN', 'SUV', 'Kicks E Power', '1.2L', 477000000, 1198, 'AT', 5, 'Bensin', 23.6, 4, 'kicks.jpg', 4),
+(38, 'NISSAN', 'SUV', 'Livina', '1.5 Type EL', 247800000, 1499, 'MT', 7, 'Bensin', 12, 4, 'livina.png', 4),
+(39, 'NISSAN', 'SUV', 'Livina', '1.5 Type VE', 279700000, 1499, 'AT', 7, 'Bensin', 11.5, 4, 'livina.png', 4),
+(40, 'NISSAN', 'SUV', 'Magnite Upper', 'Premium', 259900000, 999, 'AT', 5, 'Bensin', 17, 3, 'magnite.jpg', 4),
+(41, 'NISSAN', 'SUV', 'Magnite Upper', 'Premium', 247400000, 999, 'MT', 5, 'Bensin', 20, 3, 'magnite.jpg', 4),
+(42, 'NISSAN', 'SUV', 'Terra', 'EL 4x2', 488900000, 2488, 'MT', 7, 'Diesel', 8.8, 4, 'terra-el.png', 4),
+(43, 'NISSAN', 'SUV', 'Terra', 'VT 4x2', 515500000, 2488, 'AT', 7, 'Diesel', 8.8, 4, 'terra-vl.png', 4),
+(44, 'NISSAN', 'SUV', 'Xtrail', '2.5 VL', 591000000, 2488, 'AT', 7, 'Bensin', 8.6, 7, 'xtrail.png', 4),
+(45, 'SUZUKI', 'Crossover', 'SX4', 'SCross', 320500000, 1491, 'AT', 5, 'Bensin', 14.4, 4, 'sx4.jpg', 5),
+(46, 'SUZUKI', 'Hatchback', 'Baleno', 'New', 252500000, 1373, 'AT', 5, 'Bensin', 20, 4, 'baleno.png', 5),
+(47, 'SUZUKI', 'Hatchback', 'Ignis', 'GL ', 196000000, 1197, 'AT', 5, 'Bensin', 17.2, 4, 'ignis.jpeg', 5),
+(48, 'SUZUKI', 'Hatchback', 'Ignis', 'GL ', 186000000, 1197, 'MT', 5, 'Bensin', 17.2, 4, 'ignis.jpeg', 5),
+(49, 'SUZUKI', 'Hatchback', 'Wagon', 'GL ', 138000000, 998, 'AT', 5, 'Bensin', 21.5, 3, 'wagon.jpg', 5),
+(50, 'SUZUKI', 'Hatchback', 'Wagon', 'GL ', 147800000, 998, 'MT', 5, 'Bensin', 21, 3, 'wagon.jpg', 5),
+(51, 'SUZUKI', 'MPV', 'APV', 'SGX', 219500000, 1493, 'MT', 7, 'Bensin', 10.1, 4, 'apv.jpg', 5),
+(52, 'SUZUKI', 'MPV', 'Ertiga', 'GL ', 241500000, 1462, 'AT', 7, 'Bensin', 16.7, 4, 'ertiga.jpg', 5),
+(53, 'SUZUKI', 'Sedan', 'Ciaz', 'Ciaz', 323500000, 1373, 'MT', 5, 'Bensin', 21.4, 4, 'ciaz.jpg', 5),
+(54, 'SUZUKI', 'SUV', 'Jimmy', 'Standart', 440000000, 1462, 'MT', 4, 'Bensin', 14, 4, 'jimmy.png', 5),
+(55, 'SUZUKI', 'SUV', 'XL 7', 'ZETA', 237100000, 1462, 'MT', 7, 'Bensin', 12.7, 4, 'xl7.jpg', 5),
+(56, 'TOYOTA', 'Hatchback', 'Agya', '1.2 G STD', 141200000, 1197, 'MT', 5, 'Bensin', 19, 4, 'agya-std.jpg', 6),
+(57, 'TOYOTA', 'Hatchback', 'Agya', 'AGYA 1.2 G A/T GR SPORT', 162390000, 1197, 'AT', 5, 'Bensin', 19, 4, 'agya-sport.png', 6),
+(58, 'TOYOTA', 'Hatchback', 'Yaris', '1.5S GR Sport', 274000000, 1496, 'AT', 5, 'Bensin', 17.2, 4, 'yaris.png', 6),
+(59, 'TOYOTA', 'MPV', 'Alphard', '3.5 Q', 1905250000, 3456, 'AT', 8, 'Bensin', 6.7, 6, 'alphard.jpg', 6),
+(60, 'TOYOTA', 'MPV', 'Avanza', '1.3 E STD LUX', 179650000, 1329, 'MT', 7, 'Bensin', 13, 4, 'avanza.jpg', 6),
+(61, 'TOYOTA', 'MPV', 'Calya', '1.2 G Lux', 162775000, 1197, 'AT', 7, 'Bensin', 28, 4, 'calya.jpg', 6),
+(62, 'TOYOTA', 'MPV', 'Calya', '1.2 G Lux', 150575000, 1197, 'MT', 7, 'Bensin', 25, 4, 'calya.jpg', 6),
+(63, 'TOYOTA', 'MPV', 'Kijang Innova', '2.0 G BSN LUXURY', 332300000, 1998, 'MT', 8, 'Bensin', 10, 4, 'innova-luxury.jpg', 6),
+(64, 'TOYOTA', 'MPV', 'Kijang Innova', '2.4 G  DSL', 343800000, 2393, 'MT', 8, 'Diesel', 17.8, 4, 'innova-dsl.png', 6),
+(65, 'TOYOTA', 'MPV', 'Kijang Innova', 'VENTURER 2.4 DSL', 462500000, 2393, 'AT', 8, 'Diesel', 17.8, 4, 'innova-venturer.jpg', 6),
+(66, 'TOYOTA', 'MPV', 'Voxy', '2', 506750000, 1987, 'AT', 7, 'Bensin', 16, 4, 'voxy.jpg', 6),
+(67, 'TOYOTA', 'Sedan', 'Altis', 'New G', 487800000, 1798, 'AT', 5, 'Bensin', 18, 4, 'altis.jpg', 6),
+(68, 'TOYOTA', 'Sedan', 'Camry', '2.5 L HYBRID', 844500000, 2494, 'AT', 5, 'Bensin', 18.4, 4, 'camry.jpg', 6),
+(69, 'TOYOTA', 'Sedan', 'Vios', 'New G', 260600000, 1496, 'MT', 5, 'Bensin', 14, 4, 'vios.jpeg', 6),
+(70, 'TOYOTA', 'Sport', 'FT86', '2.0 L TRD ', 820000000, 1998, 'AT', 2, 'Bensin', 13, 4, 'ft86.png', 6),
+(71, 'TOYOTA', 'Sport', 'FT86', '2.0 L TRD ', 783800000, 1998, 'MT', 2, 'Bensin', 12.8, 4, 'ft86.png', 6),
+(72, 'TOYOTA', 'Sport', 'Supra', 'GR SUPRA 3.0 L', 2147100000, 2998, 'AT', 2, 'Bensin', 10.2, 6, 'supra.jpeg', 6),
+(73, 'TOYOTA', 'SUV', 'C-Hr', 'HYBRID HV 1.8', 552540000, 1798, 'AT', 5, 'Bensin', 24, 4, 'chr.jfif', 6),
+(74, 'TOYOTA', 'SUV', 'Fortuner', '2.4 G 4X2 DSL LUX', 493000000, 2393, 'MT', 7, 'Diesel', 11.6, 4, 'fortuner-lux.jpg', 6),
+(75, 'TOYOTA', 'SUV', 'Fortuner', '2.7 SRZ 4X2 BSN GR SPORT', 555000000, 2694, 'AT', 7, 'Bensin', 9.6, 4, 'fortuner-sport.jpeg', 6),
+(76, 'TOYOTA', 'SUV', 'Land Cruiser', '200 FULL SPEC DSL', 2552250000, 4461, 'AT', 6, 'Diesel', 6, 8, 'landcruiser.jpg', 6),
+(77, 'TOYOTA', 'SUV', 'Raize', '1.0T', 230800000, 1000, 'MT', 5, 'Bensin', 18, 3, 'raize.jpg', 6),
+(78, 'TOYOTA', 'SUV', 'Raize', '1.0T GR Sport TSS', 276100000, 1000, 'AT', 5, 'Bensin', 18, 3, 'raize-sport.jpg', 6),
+(79, 'TOYOTA', 'SUV', 'Rush', '1.5 S A/T LUX GR SPORT', 262780000, 1496, 'AT', 7, 'Bensin', 11.3, 4, 'rush.jpg', 6);
 
 -- --------------------------------------------------------
 
@@ -716,12 +717,12 @@ CREATE TABLE `prioritas_criteria` (
 --
 
 INSERT INTO `prioritas_criteria` (`id_criteria`, `priority`) VALUES
-('C01', 0.32171274672685285),
-('C02', 0.025211534063137458),
-('C03', 0.14329996040992563),
-('C04', 0.14329996040992563),
-('C05', 0.32171274672685285),
-('C06', 0.044763051663305575);
+('C01', 0.33618355024786367),
+('C02', 0.16600716547850433),
+('C03', 0.08856164697223262),
+('C04', 0.04709808368714055),
+('C05', 0.025966003366395166),
+('C06', 0.33618355024786367);
 
 -- --------------------------------------------------------
 
@@ -743,18 +744,18 @@ INSERT INTO `prioritas_sub_criteria` (`id_sub_criteria`, `sub_priority`) VALUES
 ('SC032', 1),
 ('SC041', 1),
 ('SC042', 0.11111111111111113),
-('SC051', 1),
-('SC052', 0.41130451789556044),
-('SC053', 0.1676119694895365),
+('SC021', 1),
+('SC022', 0.41130451789556044),
+('SC023', 0.1676119694895365),
+('SC011', 1),
+('SC012', 0.41130451789556044),
+('SC013', 0.1676119694895365),
 ('SC061', 1),
 ('SC062', 0.41130451789556044),
 ('SC063', 0.1676119694895365),
-('SC011', 0.41130451789556044),
-('SC012', 1),
-('SC013', 0.1676119694895365),
-('SC021', 1),
-('SC022', 0.41130451789556044),
-('SC023', 0.1676119694895365);
+('SC051', 1),
+('SC052', 0.41130451789556044),
+('SC053', 0.1676119694895365);
 
 -- --------------------------------------------------------
 
@@ -767,6 +768,46 @@ CREATE TABLE `ranking` (
   `id_mobil` int NOT NULL,
   `nilai` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `ranking`
+--
+
+INSERT INTO `ranking` (`id_ranking`, `id_mobil`, `nilai`) VALUES
+(1, 6, 0.886986262815735),
+(2, 31, 0.8046665903291594),
+(3, 1, 0.8020902628112518),
+(4, 41, 0.8020902628112518),
+(5, 12, 0.8020902628112518);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `showroom`
+--
+
+CREATE TABLE `showroom` (
+  `id_showroom` int NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `alamat` varchar(250) NOT NULL,
+  `kode_pos` int NOT NULL,
+  `jam_buka` varchar(100) NOT NULL,
+  `kontak` varchar(20) NOT NULL,
+  `image` varchar(20) DEFAULT NULL,
+  `link` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `showroom`
+--
+
+INSERT INTO `showroom` (`id_showroom`, `nama`, `alamat`, `kode_pos`, `jam_buka`, `kontak`, `image`, `link`) VALUES
+(1, 'Astra Daihatsu Padang', 'Jl. Khatib Sulaiman No.101, Ulak Karang Utara, Kec. Padang Utara, Kota Padang, Sumatera Barat', 25133, 'Senin–Jumat, 08.00–16.30 Sabtu 08.00–16.00', '(0751)7052222', 'daihatsupadang.jpg', '!1m18!1m12!1m3!1d3989.3172759795043!2d100.35080041430355!3d-0.9080373355855337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd4b9e0e9b3d52d%3A0xa3df48af72682842!2sAstra%20Daihatsu%20Padang!5e0!3m2!1sid!2sid!4v1670369013124!5m2!1sid!2sid'),
+(2, 'Honda Gajah Motor Bypass', 'Jl. Bagindo Aziz Chan No.9, Aie Pacah, Kec. Koto Tangah, Kota Padang, Sumatera Barat', 25586, 'Senin–Jumat, 08.00–17.30 Sabtu–Minggu 24 jam', '(0751)4640678', 'hondabypass.jpg', '!1m18!1m12!1m3!1d15957.420333960692!2d100.36776480781248!3d-0.8731056999999947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd4c6dabe4af12f%3A0x6e6d28f57507ec2a!2sHonda%20Gajah%20Motor%20Bypass!5e0!3m2!1sid!2sid!4v1670368956325!5m2!1sid!2sid'),
+(3, 'Mitsubishi - Khatib Sulaiman', 'Jl. Khatib Sulaiman No.75, Lolong Belanti, Kec. Padang Utara, Kota Padang, Sumatera Barat', 25134, 'Senin–Jumat, 08.00–16.00 Sabtu, 08.00–15.00 Minggu, 08.00–16.00', '(0751)447447', 'mitsubishikhatib.jpg', '!1m18!1m12!1m3!1d3989.315511352325!2d100.35211811725418!3d-0.9096349711736292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd4b8ced13c6829%3A0x9c89d256cddf3986!2sMitsubishi%20-%20Khatib%20Sulaiman!5e0!3m2!1sid!2sid!4v1670368888095!5m2!1sid!2sid'),
+(4, 'Indomobil Nissan Khatib Sulaiman Padang', 'Jl. Khatib Sulaiman No.97, Ulak Karang Sel., Kec. Padang Utara, Kota Padang, Sumatera Barat', 25221, 'Senin–Jumat, 08.30–17.00 Sabtu 08.30–13.00', '081241987006', 'nissankhatib.jpg', '!1m18!1m12!1m3!1d3989.315499491592!2d100.35211811744384!3d-0.9096457000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd4b8cf26082705%3A0x885156d0f4483d1e!2sIndomobil%20Nissan%20Khatib%20Sulaiman%20Padang!5e0!3m2!1sid!2sid!4v1670368773875!5m2!1sid!2sid'),
+(5, 'Dealer Mobil Suzuki EPM', 'Jl. Khatib Sulaiman No.87 A, Ulak Karang Utara, Kec. Padang Utara, Kota Padang, Sumatera Barat', 25137, 'Senin–Jumat, 08.30–17.00 Sabtu 08.30–13.00', '085766444024', 'suzukiepm.jpg', '!1m18!1m12!1m3!1d3989.317287819271!2d100.350800414114!3d-0.9080266067567325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd4b923c72587ed%3A0x6998b057b6f15700!2sDealer%20Mobil%20Suzuki%20EPM!5e0!3m2!1sid!2sid!4v1670369059828!5m2!1sid!2sid'),
+(6, 'Auto2000', 'Jl. By Pass No.Km 12, Sungai Sapih, Kec. Kuranji, Kota Padang, Sumatera Barat', 25174, 'Senin–Jumat,08.00–16.00 Sabtu,08.00–14.00 Minggu,08.00–15.00', '08126662000', 'auto2000.jpg', '!1m18!1m12!1m3!1d3989.332166635667!2d100.39117762695312!3d-0.8944421999999983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd4b783ffffffbf%3A0xa88e4200fec63ca2!2sAuto2000%20Bypass%20Padang!5e0!3m2!1sid!2sid!4v1670369116212!5m2!1sid!2sid');
 
 -- --------------------------------------------------------
 
@@ -835,7 +876,8 @@ ALTER TABLE `criteria`
 -- Indexes for table `mobil`
 --
 ALTER TABLE `mobil`
-  ADD PRIMARY KEY (`id_mobil`);
+  ADD PRIMARY KEY (`id_mobil`),
+  ADD KEY `id_showroom` (`id_showroom`);
 
 --
 -- Indexes for table `prioritas_criteria`
@@ -857,6 +899,12 @@ ALTER TABLE `ranking`
   ADD KEY `id_mobil` (`id_mobil`) USING BTREE;
 
 --
+-- Indexes for table `showroom`
+--
+ALTER TABLE `showroom`
+  ADD PRIMARY KEY (`id_showroom`);
+
+--
 -- Indexes for table `sub_criteria`
 --
 ALTER TABLE `sub_criteria`
@@ -870,13 +918,19 @@ ALTER TABLE `sub_criteria`
 -- AUTO_INCREMENT for table `mobil`
 --
 ALTER TABLE `mobil`
-  MODIFY `id_mobil` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=236;
+  MODIFY `id_mobil` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT for table `ranking`
 --
 ALTER TABLE `ranking`
-  MODIFY `id_ranking` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_ranking` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `showroom`
+--
+ALTER TABLE `showroom`
+  MODIFY `id_showroom` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
@@ -887,8 +941,8 @@ ALTER TABLE `ranking`
 --
 ALTER TABLE `alternatif`
   ADD CONSTRAINT `alternatif_ibfk_1` FOREIGN KEY (`id_mobil`) REFERENCES `mobil` (`id_mobil`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `alternatif_ibfk_2` FOREIGN KEY (`id_criteria`) REFERENCES `criteria` (`id_criteria`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `alternatif_ibfk_3` FOREIGN KEY (`id_sub_criteria`) REFERENCES `sub_criteria` (`id_sub_criteria`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `alternatif_ibfk_2` FOREIGN KEY (`id_sub_criteria`) REFERENCES `sub_criteria` (`id_sub_criteria`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `alternatif_ibfk_3` FOREIGN KEY (`id_criteria`) REFERENCES `criteria` (`id_criteria`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `bobot_criteria`
@@ -901,6 +955,12 @@ ALTER TABLE `bobot_criteria`
 --
 ALTER TABLE `bobot_sub_criteria`
   ADD CONSTRAINT `bobot_sub_criteria_ibfk_1` FOREIGN KEY (`id_sub_criteria`) REFERENCES `sub_criteria` (`id_sub_criteria`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `mobil`
+--
+ALTER TABLE `mobil`
+  ADD CONSTRAINT `mobil_ibfk_1` FOREIGN KEY (`id_showroom`) REFERENCES `showroom` (`id_showroom`);
 
 --
 -- Constraints for table `prioritas_criteria`

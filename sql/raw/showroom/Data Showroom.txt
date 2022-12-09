@@ -1,0 +1,45 @@
+toyota
+Nama showroom	: Auto2000
+alamat		: Jl. By Pass No.Km 12, Sungai Sapih, Kec. Kuranji, Kota Padang, Sumatera Barat 
+Kode pos	: 25174
+Jam buka	: Senin–Jumat,08.00–16.00 Sabtu,08.00–14.00 Minggu,08.00–15.00
+Kontak		: 08126662000
+
+suzuki
+Nama showroom	: Dealer Mobil Suzuki EPM
+alamat		: Jl. Khatib Sulaiman No.87 A, Ulak Karang Utara, Kec. Padang Utara, Kota Padang, Sumatera Barat 
+Kode pos	: 25137 
+Jam buka	: Senin–Jumat, 08.30–17.00 Sabtu 08.30–13.00
+Kontak		: 085766444024
+
+daihatsu
+Nama showroom	: Astra Daihatsu Padang
+alamat		: Jl. Khatib Sulaiman No.101, Ulak Karang Utara, Kec. Padang Utara, Kota Padang, Sumatera Barat 
+Kode pos	: 25133
+Jam buka	: Senin–Jumat, 08.00–16.30 Sabtu 08.00–16.00
+Kontak		: (0751)7052222
+
+nissan
+Nama showroom	: Indomobil Nissan Khatib Sulaiman Padang
+alamat		: Jl. Khatib Sulaiman No.97, Ulak Karang Sel., Kec. Padang Utara, Kota Padang, Sumatera Barat 
+Kode pos	: 25221
+Jam buka	: Senin–Jumat, 08.30–17.00 Sabtu 08.30–13.00
+Kontak		: 081241987006
+
+
+honda
+Nama showroom	: Honda Gajah Motor Bypass
+alamat		: Jl. Bagindo Aziz Chan No.9, Aie Pacah, Kec. Koto Tangah, Kota Padang, Sumatera Barat 
+Kode pos	: 25586
+Jam buka	: Senin–Jumat, 08.00–17.30 Sabtu–Minggu 24 jam
+Kontak		: (0751)4640678
+
+
+mitsubishi
+Nama showroom	: Mitsubishi - Khatib Sulaiman
+alamat		: Jl. Khatib Sulaiman No.75, Lolong Belanti, Kec. Padang Utara, Kota Padang, Sumatera Barat 
+Kode pos	: 25134
+Jam buka	: Senin–Jumat, 08.00–16.00 Sabtu, 08.00–15.00 Minggu, 08.00–16.00
+Kontak		: (0751)447447
+
+

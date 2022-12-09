@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg "
+      xmlns:text-align="http://www.w3.org/1999/xhtml">
+  <!-- Navbar -->
+  <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+    <div class="container-fluid py-1 px-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/welcome">Home</a></li>
+          <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Showroom</li>
+        </ol>
+        <h6 class="font-weight-bolder mb-0">{{ nn }}</h6>
+      </nav>
+      <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+        <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+        </div>
+        <ul class="navbar-nav  justify-content-end">
+          <li class="nav-item dropdown pe-2 d-flex align-items-center">
+            <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-user cursor-pointer"></i>
+              <span class="d-sm-inline d-none">{% if session['logged_in'] == True %}Admin{% else %}Guest{% endif %}</span>
+            </a>
+            <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+              <li class="mb-2">
+                <a class="dropdown-item border-radius-md" href="/logout">
+                  <div class="d-flex py-1">
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6 class="text-sm font-weight-normal mb-1">
+                        <span class="font-weight-bold">Logout</span>
+                      </h6>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <div class="container-fluid py-4">
+    <div class="row">
+      <div class="card d-flex m-4 col-md-6">
+        {% for item in rows %}
+        <div class="card-header">
+          <span class="text-center text-uppercase text-dark text-lg font-weight-bolder">{{item[1]}}</span>
+        </div>
+        <div class="card-body px-1 pt-3">
+          <div class="text-center">
+            <img src="/static/imageshowroom/{{ item[6] }}" class="img-fluid h-80 w-80" alt="gambar">
+          </div>
+        </div>
+        <div class="card-footer ">
+          <div class="row">
+            <div class="col-md-3">
+              <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Nama</span>
+            </div>
+            <div class="col-md-9">
+              <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[1]}}</span>
+            </div>
+            <div class="col-md-3">
+              <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Alamat</span>
+            </div>
+            <div class="col-md-9">
+              <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[2]}}</span>
+            </div>
+            <div class="col-md-3">
+              <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Kode Pos</span>
+            </div>
+            <div class="col-md-9">
+              <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[3]}}</span>
+            </div>
+            <div class="col-md-3">
+              <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Jam Buka</span>
+            </div>
+            <div class="col-md-9">
+              <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[4]}}</span>
+            </div>
+            <div class="col-md-3">
+              <span class="text-center text-uppercase text-primary text-sm font-weight-bolder ">Kontak</span>
+            </div>
+            <div class="col-md-9">
+              <span class="text-center text-uppercase text-dark text-sm font-weight-bolder">{{item[5]}}</span>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="card d-flex mt-4 mb-4 col-md-5">
+        {% for item in rows %}
+        <div class="card-header">
+          <span class="text-center text-uppercase text-dark text-md font-weight-bolder">Location</span>
+        </div>
+        <div class="card-body p-1">
+          <div class="text-center">
+            <iframe src="https://www.google.com/maps/embed?pb={{item[7]}}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
